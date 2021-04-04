@@ -46,6 +46,28 @@ dependencies {
     implementation(project("detekt-tooling"))
 }
 
+tasks {
+    jacocoTestReport {
+        executionData.setFrom(fileTree(project.rootDir.absolutePath).include("**/build/jacoco/*.exec"))
+        val examplesOrTestUtils = setOf(
+            "detekt-bom",
+            "detekt-test",
+            "detekt-test-utils",
+            "detekt-sample-extensions"
+        )
+        subprojects
+            .filterNot { it.name in examplesOrTestUtils }
+            .forEach {
+                this@jacocoTestReport.sourceSets(it.sourceSets.main.get())
+                this@jacocoTestReport.dependsOn(it.tasks.test)
+            }
+        reports {
+            xml.isEnabled = true
+            xml.destination = file("$buildDir/reports/jacoco/report.xml")
+        }
+    }
+}
+
 // A resolvable configuration to collect source code
 val jacocoSourceDirs: Configuration by configurations.creating {
     isVisible = false
