@@ -10,6 +10,7 @@ plugins {
 dependencies {
     api(kotlin("compiler-embeddable"))
     api(project(":detekt-psi-utils"))
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core")
 
     testImplementation(project(":detekt-test"))
 
