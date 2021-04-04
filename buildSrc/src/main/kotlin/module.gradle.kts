@@ -1,5 +1,6 @@
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.gradle.api.tasks.testing.logging.TestLogEvent
+import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSet
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -54,7 +55,7 @@ configurations.create("transitiveSourcesElements") {
         attribute(Category.CATEGORY_ATTRIBUTE, objects.named(Category.DOCUMENTATION))
         attribute(DocsType.DOCS_TYPE_ATTRIBUTE, objects.named("source-folders"))
     }
-    sourceSets.main.get().allSource.srcDirs.forEach {
+    sourceSets.main.get().withConvention(KotlinSourceSet::class) { kotlin }.srcDirs.forEach {
         outgoing.artifact(it)
     }
 }
