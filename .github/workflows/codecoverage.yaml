@@ -25,7 +25,7 @@ jobs:
           java-version: 11
 
       - name: Generate Coverage Report
-        run: ./gradlew codeCoverageReport -Dorg.gradle.caching=false
+        run: ./gradlew jacocoMergedReport -Dorg.gradle.caching=false
 
       - name: Publish Coverage
         if: success()

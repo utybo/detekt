@@ -107,7 +107,7 @@ val jacocoClassDirs: Configuration by configurations.creating {
     }
 }
 
-val codeCoverageReport by tasks.registering(JacocoReport::class) {
+val jacocoMergedReport by tasks.registering(JacocoReport::class) {
     executionData.from(jacocoExecutionData.incoming.artifacts.artifactFiles)
     sourceDirectories.from(jacocoSourceDirs.incoming.artifacts.artifactFiles)
     classDirectories.from(jacocoClassDirs.incoming.artifacts.artifactFiles)
