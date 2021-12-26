@@ -19,7 +19,7 @@
 <!-- most color styles are extracted out to here -->
 <link rel="stylesheet" href="/detekt/css/theme-blue.css">
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 <script src="/detekt/js/jquery.navgoco.min.js"></script>
@@ -28,11 +28,11 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <!-- Anchor.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.3.1/anchor.min.js"></script>
 <script src="/detekt/js/toc.js"></script>
 <script src="/detekt/js/customscripts.js"></script>
 
-<link rel="shortcut icon" href="/detekt/images/favicon.ico">
+<link rel="shortcut icon" href="/detekt/images/favicon.svg">
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -212,6 +212,13 @@
           
           
           
+          <li><a href="/detekt/compose.html">Configuration for Compose</a></li>
+          
+          
+          
+          
+          
+          
           <li><a href="/detekt/reporting.html">Reporting</a></li>
           
           
@@ -241,6 +248,13 @@
           
           
           <li><a href="/detekt/snapshots.html">Using snapshots</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a href="/detekt/compatibility.html">Compatibility Table</a></li>
           
           
           
@@ -386,7 +400,7 @@
           
           
           
-          <li><a href="/detekt/pages/kdoc/detekt-api/index.html">detekt-api</a></li>
+          <li><a href="/detekt/pages/kdoc">detekt-api</a></li>
           
           
           
@@ -460,46 +474,64 @@ $('#toc').on('click', 'a', function() {
   <ol>
   <li>Add following lines to your build.gradle file.</li>
   <li>Run <code class="language-plaintext highlighter-rouge">gradle detekt</code></li>
-  <li>Add <code class="language-plaintext highlighter-rouge">check.dependsOn detekt</code> if you want to run <em>detekt</em> on every <code class="language-plaintext highlighter-rouge">build</code></li>
 </ol>
 
 <h6 id="groovy-dsl">Groovy DSL</h6>
 <div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">repositories</span> <span class="o">{</span>
-    <span class="n">jcenter</span><span class="o">()</span>
-
-    <span class="c1">// or</span>
-
     <span class="n">mavenCentral</span><span class="o">()</span>
-    <span class="n">jcenter</span> <span class="o">{</span>
-        <span class="n">content</span> <span class="o">{</span>
-            <span class="c1">// just allow to include kotlinx projects</span>
-            <span class="c1">// detekt needs 'kotlinx-html' for the html report</span>
-            <span class="n">includeGroup</span> <span class="s2">"org.jetbrains.kotlinx"</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
 <span class="o">}</span>
 
 <span class="n">configurations</span> <span class="o">{</span>
 	<span class="n">detekt</span>
 <span class="o">}</span>
 
-<span class="n">task</span> <span class="nf">detekt</span><span class="o">(</span><span class="nl">type:</span> <span class="n">JavaExec</span><span class="o">)</span> <span class="o">{</span>
+<span class="kt">def</span> <span class="n">detektTask</span> <span class="o">=</span> <span class="n">tasks</span><span class="o">.</span><span class="na">register</span><span class="o">(</span><span class="s2">"detekt"</span><span class="o">,</span> <span class="n">JavaExec</span><span class="o">)</span> <span class="o">{</span>
 	<span class="n">main</span> <span class="o">=</span> <span class="s2">"io.gitlab.arturbosch.detekt.cli.Main"</span>
 	<span class="n">classpath</span> <span class="o">=</span> <span class="n">configurations</span><span class="o">.</span><span class="na">detekt</span>
+
 	<span class="kt">def</span> <span class="n">input</span> <span class="o">=</span> <span class="s2">"$projectDir"</span>
 	<span class="kt">def</span> <span class="n">config</span> <span class="o">=</span> <span class="s2">"$projectDir/detekt.yml"</span>
 	<span class="kt">def</span> <span class="n">exclude</span> <span class="o">=</span> <span class="s2">".*/build/.*,.*/resources/.*"</span>
 	<span class="kt">def</span> <span class="n">params</span> <span class="o">=</span> <span class="o">[</span> <span class="s1">'-i'</span><span class="o">,</span> <span class="n">input</span><span class="o">,</span> <span class="s1">'-c'</span><span class="o">,</span> <span class="n">config</span><span class="o">,</span> <span class="s1">'-ex'</span><span class="o">,</span> <span class="n">exclude</span><span class="o">]</span>
+
 	<span class="n">args</span><span class="o">(</span><span class="n">params</span><span class="o">)</span>
 <span class="o">}</span>
 
 <span class="n">dependencies</span> <span class="o">{</span>
-	<span class="n">detekt</span> <span class="s1">'io.gitlab.arturbosch.detekt:detekt-cli:1.16.0'</span>
+	<span class="n">detekt</span> <span class="s1">'io.gitlab.arturbosch.detekt:detekt-cli:1.19.0'</span>
 <span class="o">}</span>
+
+<span class="c1">// Remove this line if you don't want to run detekt on every build</span>
+<span class="n">check</span><span class="o">.</span><span class="na">dependsOn</span> <span class="n">detektTask</span>
 </code></pre></div></div>
 
 <h6 id="kotlin-dsl">Kotlin DSL</h6>
-<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// TODO</span>
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">repositories</span> <span class="p">{</span>
+    <span class="nf">mavenCentral</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="kd">val</span> <span class="py">detekt</span> <span class="k">by</span> <span class="n">configurations</span><span class="p">.</span><span class="n">creating</span>
+
+<span class="kd">val</span> <span class="py">detektTask</span> <span class="p">=</span> <span class="n">tasks</span><span class="p">.</span><span class="n">register</span><span class="p">&lt;</span><span class="nc">JavaExec</span><span class="p">&gt;(</span><span class="s">"detekt"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">main</span> <span class="p">=</span> <span class="s">"io.gitlab.arturbosch.detekt.cli.Main"</span>
+    <span class="n">classpath</span> <span class="p">=</span> <span class="n">detekt</span>
+
+    <span class="kd">val</span> <span class="py">input</span> <span class="p">=</span> <span class="n">projectDir</span>
+    <span class="kd">val</span> <span class="py">config</span> <span class="p">=</span> <span class="s">"$projectDir/detekt.yml"</span>
+    <span class="kd">val</span> <span class="py">exclude</span> <span class="p">=</span> <span class="s">".*/build/.*,.*/resources/.*"</span>
+    <span class="kd">val</span> <span class="py">params</span> <span class="p">=</span> <span class="nf">listOf</span><span class="p">(</span><span class="s">"-i"</span><span class="p">,</span> <span class="n">input</span><span class="p">,</span> <span class="s">"-c"</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="s">"-ex"</span><span class="p">,</span> <span class="n">exclude</span><span class="p">)</span>
+
+    <span class="nf">args</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="nf">dependencies</span> <span class="p">{</span>
+    <span class="nf">detekt</span><span class="p">(</span><span class="s">"io.gitlab.arturbosch.detekt:detekt-cli:1.19.0"</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">// Remove this block if you don't want to run detekt on every build</span>
+<span class="n">tasks</span><span class="p">.</span><span class="nf">check</span> <span class="p">{</span>
+    <span class="nf">dependsOn</span><span class="p">(</span><span class="n">detektTask</span><span class="p">)</span>
+<span class="p">}</span>
 </code></pre></div></div>
 
 
@@ -518,7 +550,7 @@ $('#toc').on('click', 'a', function() {
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2021 The detekt Team. All rights reserved. <br />
- Site last generated: Apr 5, 2021 <br />
+ Site last generated: Dec 26, 2021 <br />
                 </div>
             </div>
 </footer>

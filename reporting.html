@@ -19,7 +19,7 @@
 <!-- most color styles are extracted out to here -->
 <link rel="stylesheet" href="/detekt/css/theme-blue.css">
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 <script src="/detekt/js/jquery.navgoco.min.js"></script>
@@ -28,11 +28,11 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <!-- Anchor.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.3.1/anchor.min.js"></script>
 <script src="/detekt/js/toc.js"></script>
 <script src="/detekt/js/customscripts.js"></script>
 
-<link rel="shortcut icon" href="/detekt/images/favicon.ico">
+<link rel="shortcut icon" href="/detekt/images/favicon.svg">
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -212,6 +212,13 @@
           
           
           
+          <li><a href="/detekt/compose.html">Configuration for Compose</a></li>
+          
+          
+          
+          
+          
+          
           <li class="active"><a href="/detekt/reporting.html">Reporting</a></li>
           
           
@@ -241,6 +248,13 @@
           
           
           <li><a href="/detekt/snapshots.html">Using snapshots</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a href="/detekt/compatibility.html">Compatibility Table</a></li>
           
           
           
@@ -386,7 +400,7 @@
           
           
           
-          <li><a href="/detekt/pages/kdoc/detekt-api/index.html">detekt-api</a></li>
+          <li><a href="/detekt/pages/kdoc">detekt-api</a></li>
           
           
           
@@ -539,12 +553,13 @@ run <code class="language-plaintext highlighter-rouge">./gradlew detekt reportMe
 
 <span class="n">subprojects</span> <span class="o">{</span>
   <span class="n">detekt</span> <span class="o">{</span>
-    <span class="n">reports</span><span class="o">.</span><span class="na">xml</span><span class="o">.</span><span class="na">enabled</span> <span class="o">=</span> <span class="kc">true</span> <span class="c1">// reports.sarif.enabled = true</span>
+    <span class="n">reports</span><span class="o">.</span><span class="na">xml</span><span class="o">.</span><span class="na">required</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span>
+    <span class="c1">// reports.sarif.required.set(true)</span>
   <span class="o">}</span>
 
   <span class="n">plugins</span><span class="o">.</span><span class="na">withType</span><span class="o">(</span><span class="n">io</span><span class="o">.</span><span class="na">gitlab</span><span class="o">.</span><span class="na">arturbosch</span><span class="o">.</span><span class="na">detekt</span><span class="o">.</span><span class="na">DetektPlugin</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">tasks</span><span class="o">.</span><span class="na">withType</span><span class="o">(</span><span class="n">io</span><span class="o">.</span><span class="na">gitlab</span><span class="o">.</span><span class="na">arturbosch</span><span class="o">.</span><span class="na">detekt</span><span class="o">.</span><span class="na">Detekt</span><span class="o">)</span> <span class="o">{</span> <span class="n">detektTask</span> <span class="o">-&gt;</span>
-      <span class="n">finalizedBy</span><span class="o">(</span><span class="n">mergeTask</span><span class="o">)</span>
+      <span class="n">finalizedBy</span><span class="o">(</span><span class="n">reportMerge</span><span class="o">)</span>
 
       <span class="n">reportMerge</span><span class="o">.</span><span class="na">configure</span> <span class="o">{</span> <span class="n">mergeTask</span> <span class="o">-&gt;</span>
         <span class="n">mergeTask</span><span class="o">.</span><span class="na">input</span><span class="o">.</span><span class="na">from</span><span class="o">(</span><span class="n">detektTask</span><span class="o">.</span><span class="na">xmlReportFile</span><span class="o">)</span> <span class="c1">// or detektTask.sarifReportFile</span>
@@ -562,7 +577,8 @@ run <code class="language-plaintext highlighter-rouge">./gradlew detekt reportMe
 
 <span class="nf">subprojects</span> <span class="p">{</span>
   <span class="nf">detekt</span> <span class="p">{</span>
-    <span class="n">reports</span><span class="p">.</span><span class="n">xml</span><span class="p">.</span><span class="n">enabled</span> <span class="p">=</span> <span class="k">true</span> <span class="c1">// reports.sarif.enabled = true</span>
+    <span class="n">reports</span><span class="p">.</span><span class="n">xml</span><span class="p">.</span><span class="n">required</span><span class="p">.</span><span class="k">set</span><span class="p">(</span><span class="k">true</span><span class="p">)</span>
+    <span class="c1">// reports.sarif.required.set(true)</span>
   <span class="p">}</span>
   
   <span class="n">plugins</span><span class="p">.</span><span class="nf">withType</span><span class="p">(</span><span class="n">io</span><span class="p">.</span><span class="n">gitlab</span><span class="p">.</span><span class="n">arturbosch</span><span class="p">.</span><span class="n">detekt</span><span class="p">.</span><span class="nc">DetektPlugin</span><span class="o">::</span><span class="k">class</span><span class="p">)</span> <span class="p">{</span>
@@ -599,11 +615,11 @@ You can follow to the <a href="https://docs.github.com/en/github/finding-securit
       <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Run detekt</span>
         <span class="na">run</span><span class="pi">:</span> <span class="s">./gradlew detekt</span>
 
-      <span class="c1"># Make sure we always run this upload task, because the previous step fails if there are</span>
-      <span class="c1"># findings.</span>
+      <span class="c1"># Make sure we always run this upload task,</span>
+      <span class="c1"># because the previous step may fail if there are findings.</span>
       <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Upload SARIF to Github using the upload-sarif action</span>
         <span class="na">uses</span><span class="pi">:</span> <span class="s">github/codeql-action/upload-sarif@v1</span>
-        <span class="na">if</span><span class="pi">:</span> <span class="s">$</span>
+        <span class="na">if</span><span class="pi">:</span> <span class="s">success() || failure()</span>
         <span class="na">with</span><span class="pi">:</span>
           <span class="na">sarif_file</span><span class="pi">:</span> <span class="s">build/detekt.sarif</span>
 </code></pre></div></div>
@@ -624,7 +640,7 @@ You can follow to the <a href="https://docs.github.com/en/github/finding-securit
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2021 The detekt Team. All rights reserved. <br />
- Site last generated: Apr 5, 2021 <br />
+ Site last generated: Dec 26, 2021 <br />
                 </div>
             </div>
 </footer>

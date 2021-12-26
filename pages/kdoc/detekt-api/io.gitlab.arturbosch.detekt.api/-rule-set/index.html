@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="keywords" content=" ">
-<title>RuleSet - | A static code analyzer for Kotlin</title>
+<title>RuleSet | A static code analyzer for Kotlin</title>
 <link rel="stylesheet" href="/detekt/css/syntax.css">
 
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -19,7 +19,7 @@
 <!-- most color styles are extracted out to here -->
 <link rel="stylesheet" href="/detekt/css/theme-blue.css">
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 <script src="/detekt/js/jquery.navgoco.min.js"></script>
@@ -28,11 +28,11 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <!-- Anchor.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.3.1/anchor.min.js"></script>
 <script src="/detekt/js/toc.js"></script>
 <script src="/detekt/js/customscripts.js"></script>
 
-<link rel="shortcut icon" href="/detekt/images/favicon.ico">
+<link rel="shortcut icon" href="/detekt/images/favicon.svg">
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -148,7 +148,7 @@
                                 searchInput: document.getElementById('search-input'),
                                 resultsContainer: document.getElementById('results-container'),
                                 dataSource: '/detekt/search.json',
-                                searchResultTemplate: '<li><a href="{url}" title="RuleSet -">{title}</a></li>',
+                                searchResultTemplate: '<li><a href="{url}" title="RuleSet">{title}</a></li>',
                     noResultsText: 'No results found.',
                             limit: 10,
                             fuzzy: true,
@@ -212,6 +212,13 @@
           
           
           
+          <li><a href="/detekt/compose.html">Configuration for Compose</a></li>
+          
+          
+          
+          
+          
+          
           <li><a href="/detekt/reporting.html">Reporting</a></li>
           
           
@@ -241,6 +248,13 @@
           
           
           <li><a href="/detekt/snapshots.html">Using snapshots</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a href="/detekt/compatibility.html">Compatibility Table</a></li>
           
           
           
@@ -386,7 +400,7 @@
           
           
           
-          <li><a href="/detekt/pages/kdoc/detekt-api/index.html">detekt-api</a></li>
+          <li><a href="/detekt/pages/kdoc">detekt-api</a></li>
           
           
           
@@ -413,7 +427,7 @@
         <!-- Content Column -->
         <div class="col-md-9" id="tg-sb-content">
             <div class="post-header">
-   <h1 class="post-title-main">RuleSet -</h1>
+   <h1 class="post-title-main">RuleSet</h1>
 </div>
 
 
@@ -457,28 +471,28 @@ $('#toc').on('click', 'a', function() {
 
     
 
-  <p>//<a href="/detekt/pages/kdoc/detekt-api/">detekt-api</a>/<a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/">io.gitlab.arturbosch.detekt.api</a>/<a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-rule-set/">RuleSet</a></p>
+  <p>//<a href="../../../index.html">detekt-api</a>/<a href="../index.html">io.gitlab.arturbosch.detekt.api</a>/<a href="index.html">RuleSet</a></p>
 
 <h1 id="ruleset">RuleSet</h1>
-<p>[jvm]</p>
+
+<p>[jvm]<br />
+class <a href="index.html">RuleSet</a>(id: <a href="../index.html#-2041591616%2FClasslikes%2F-879243379">RuleSetId</a>, rules: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a>&lt;<a href="../-base-rule/index.html">BaseRule</a>&gt;)</p>
 
 <p>A rule set is a collection of rules and must be defined within a rule set provider implementation.</p>
-
-<p>class <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-rule-set/">RuleSet</a>(<strong>id</strong>: <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/#io.gitlab.arturbosch.detekt.api/RuleSetId///PointingToDeclaration/">RuleSetId</a>, <strong>rules</strong>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a>&lt;<a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api.internal/-base-rule/">BaseRule</a>&gt;)</p>
 
 <h2 id="constructors">Constructors</h2>
 
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Summary</th>
+      <th> </th>
+      <th> </th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td><a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-rule-set/-rule-set.html">RuleSet</a></td>
-      <td>[jvm] fun <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-rule-set/-rule-set.html">RuleSet</a>(id: <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/#io.gitlab.arturbosch.detekt.api/RuleSetId///PointingToDeclaration/">RuleSetId</a>, rules: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a>&lt;<a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api.internal/-base-rule/">BaseRule</a>&gt;)   <br /></td>
+      <td><a href="-rule-set.html">RuleSet</a></td>
+      <td>[jvm]<br />fun <a href="-rule-set.html">RuleSet</a>(id: <a href="../index.html#-2041591616%2FClasslikes%2F-879243379">RuleSetId</a>, rules: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a>&lt;<a href="../-base-rule/index.html">BaseRule</a>&gt;)</td>
     </tr>
   </tbody>
 </table>
@@ -494,20 +508,8 @@ $('#toc').on('click', 'a', function() {
   </thead>
   <tbody>
     <tr>
-      <td><a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-rule-set/accept.html">accept</a></td>
-      <td>[jvm]  <br />Brief description  <br /><br /><br />Visits given file with all rules of this rule set, returning a list of all code smell findings.<br /><br />  <br />Content  <br /><del>fun</del> <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-rule-set/accept.html"><del>accept</del></a><del>(</del><del>file</del><del>:</del> KtFile<del>,</del> <del>bindingContext</del><del>:</del> BindingContext<del>)</del><del>:</del> <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a>&lt;<a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-finding/">Finding</a>&gt;  <br /><br /><br /></td>
-    </tr>
-    <tr>
-      <td><a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api.internal/-simple-notification/#kotlin/Any/equals/#kotlin.Any?/PointingToDeclaration/">equals</a></td>
-      <td>[jvm]  <br />Content  <br />open operator override fun <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api.internal/-simple-notification/#kotlin/Any/equals/#kotlin.Any?/PointingToDeclaration/">equals</a>(other: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a>?): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a>  <br /><br /><br /></td>
-    </tr>
-    <tr>
-      <td><a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api.internal/-simple-notification/#kotlin/Any/hashCode/#/PointingToDeclaration/">hashCode</a></td>
-      <td>[jvm]  <br />Content  <br />open override fun <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api.internal/-simple-notification/#kotlin/Any/hashCode/#/PointingToDeclaration/">hashCode</a>(): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a>  <br /><br /><br /></td>
-    </tr>
-    <tr>
-      <td><a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api.internal/-requires-type-resolution/#kotlin/Any/toString/#/PointingToDeclaration/">toString</a></td>
-      <td>[jvm]  <br />Content  <br />open override fun <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api.internal/-requires-type-resolution/#kotlin/Any/toString/#/PointingToDeclaration/">toString</a>(): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>  <br /><br /><br /></td>
+      <td><a href="accept.html">accept</a></td>
+      <td>[jvm]<br /><del>fun</del> <a href="accept.html"><del>accept</del></a><del>(</del><del>file</del><del>:</del> KtFile<del>,</del> <del>bindingContext</del><del>:</del> BindingContext <del>=</del> <del>BindingContext.EMPTY</del><del>)</del><del>:</del> <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a>&lt;<a href="../-finding/index.html">Finding</a>&gt;<br />Visits given file with all rules of this rule set, returning a list of all code smell findings.</td>
     </tr>
   </tbody>
 </table>
@@ -523,16 +525,16 @@ $('#toc').on('click', 'a', function() {
   </thead>
   <tbody>
     <tr>
-      <td><a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-rule-set/#io.gitlab.arturbosch.detekt.api/RuleSet/id/#/PointingToDeclaration/">id</a></td>
-      <td>[jvm] val <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-rule-set/#io.gitlab.arturbosch.detekt.api/RuleSet/id/#/PointingToDeclaration/">id</a>: <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/#io.gitlab.arturbosch.detekt.api/RuleSetId///PointingToDeclaration/">RuleSetId</a>   <br /></td>
+      <td><a href="id.html">id</a></td>
+      <td>[jvm]<br />val <a href="id.html">id</a>: <a href="../index.html#-2041591616%2FClasslikes%2F-879243379">RuleSetId</a></td>
     </tr>
     <tr>
-      <td><a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-rule-set/#io.gitlab.arturbosch.detekt.api/RuleSet/pathFilters/#/PointingToDeclaration/">pathFilters</a></td>
-      <td>[jvm] <br /><br />Is used to determine if a given KtFile should be analyzed at all.<br /><br /><del>var</del> <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-rule-set/#io.gitlab.arturbosch.detekt.api/RuleSet/pathFilters/#/PointingToDeclaration/"><del>pathFilters</del></a><del>:</del> <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api.internal/-path-filters/">PathFilters</a>?   <br /></td>
+      <td><a href="path-filters.html">pathFilters</a></td>
+      <td>[jvm]<br /><del>var</del> <a href="path-filters.html"><del>pathFilters</del></a><del>:</del> <a href="../../io.gitlab.arturbosch.detekt.api.internal/-path-filters/index.html">PathFilters</a>? <del>=</del> <del>null</del><br />Is used to determine if a given KtFile should be analyzed at all.</td>
     </tr>
     <tr>
-      <td><a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-rule-set/#io.gitlab.arturbosch.detekt.api/RuleSet/rules/#/PointingToDeclaration/">rules</a></td>
-      <td>[jvm] val <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-rule-set/#io.gitlab.arturbosch.detekt.api/RuleSet/rules/#/PointingToDeclaration/">rules</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a>&lt;<a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api.internal/-base-rule/">BaseRule</a>&gt;   <br /></td>
+      <td><a href="rules.html">rules</a></td>
+      <td>[jvm]<br />val <a href="rules.html">rules</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a>&lt;<a href="../-base-rule/index.html">BaseRule</a>&gt;</td>
     </tr>
   </tbody>
 </table>
@@ -554,7 +556,7 @@ $('#toc').on('click', 'a', function() {
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2021 The detekt Team. All rights reserved. <br />
- Site last generated: Apr 5, 2021 <br />
+ Site last generated: Dec 26, 2021 <br />
                 </div>
             </div>
 </footer>

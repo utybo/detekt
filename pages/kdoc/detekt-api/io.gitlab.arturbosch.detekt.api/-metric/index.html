@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="keywords" content=" ">
-<title>Metric - | A static code analyzer for Kotlin</title>
+<title>Metric | A static code analyzer for Kotlin</title>
 <link rel="stylesheet" href="/detekt/css/syntax.css">
 
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -19,7 +19,7 @@
 <!-- most color styles are extracted out to here -->
 <link rel="stylesheet" href="/detekt/css/theme-blue.css">
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 <script src="/detekt/js/jquery.navgoco.min.js"></script>
@@ -28,11 +28,11 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <!-- Anchor.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.3.1/anchor.min.js"></script>
 <script src="/detekt/js/toc.js"></script>
 <script src="/detekt/js/customscripts.js"></script>
 
-<link rel="shortcut icon" href="/detekt/images/favicon.ico">
+<link rel="shortcut icon" href="/detekt/images/favicon.svg">
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -148,7 +148,7 @@
                                 searchInput: document.getElementById('search-input'),
                                 resultsContainer: document.getElementById('results-container'),
                                 dataSource: '/detekt/search.json',
-                                searchResultTemplate: '<li><a href="{url}" title="Metric -">{title}</a></li>',
+                                searchResultTemplate: '<li><a href="{url}" title="Metric">{title}</a></li>',
                     noResultsText: 'No results found.',
                             limit: 10,
                             fuzzy: true,
@@ -212,6 +212,13 @@
           
           
           
+          <li><a href="/detekt/compose.html">Configuration for Compose</a></li>
+          
+          
+          
+          
+          
+          
           <li><a href="/detekt/reporting.html">Reporting</a></li>
           
           
@@ -241,6 +248,13 @@
           
           
           <li><a href="/detekt/snapshots.html">Using snapshots</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a href="/detekt/compatibility.html">Compatibility Table</a></li>
           
           
           
@@ -386,7 +400,7 @@
           
           
           
-          <li><a href="/detekt/pages/kdoc/detekt-api/index.html">detekt-api</a></li>
+          <li><a href="/detekt/pages/kdoc">detekt-api</a></li>
           
           
           
@@ -413,7 +427,7 @@
         <!-- Content Column -->
         <div class="col-md-9" id="tg-sb-content">
             <div class="post-header">
-   <h1 class="post-title-main">Metric -</h1>
+   <h1 class="post-title-main">Metric</h1>
 </div>
 
 
@@ -457,32 +471,32 @@ $('#toc').on('click', 'a', function() {
 
     
 
-  <p>//<a href="/detekt/pages/kdoc/detekt-api/">detekt-api</a>/<a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/">io.gitlab.arturbosch.detekt.api</a>/<a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-metric/">Metric</a></p>
+  <p>//<a href="../../../index.html">detekt-api</a>/<a href="../index.html">io.gitlab.arturbosch.detekt.api</a>/<a href="index.html">Metric</a></p>
 
 <h1 id="metric">Metric</h1>
-<p>[jvm]</p>
+
+<p>[jvm]<br />
+data class <a href="index.html">Metric</a>(type: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>, value: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a>, threshold: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a>, isDouble: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a>, conversionFactor: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a>)</p>
 
 <p>Metric type, can be an integer or double value. Internally it is stored as an integer, but the conversion factor and is double attributes can be used to retrieve it as a double value.</p>
-
-<p>data class <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-metric/">Metric</a>(<strong>type</strong>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>, <strong>value</strong>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a>, <strong>threshold</strong>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a>, <strong>isDouble</strong>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a>, <strong>conversionFactor</strong>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a>)</p>
 
 <h2 id="constructors">Constructors</h2>
 
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Summary</th>
+      <th> </th>
+      <th> </th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td><a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-metric/-metric.html">Metric</a></td>
-      <td>[jvm] fun <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-metric/-metric.html">Metric</a>(type: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>, value: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a>, threshold: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a>, conversionFactor: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a>)   <br /></td>
+      <td><a href="-metric.html">Metric</a></td>
+      <td>[jvm]<br />fun <a href="-metric.html">Metric</a>(type: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>, value: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a>, threshold: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a>, conversionFactor: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a> = DEFAULT_FLOAT_CONVERSION_FACTOR)</td>
     </tr>
     <tr>
-      <td><a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-metric/-metric.html">Metric</a></td>
-      <td>[jvm] fun <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-metric/-metric.html">Metric</a>(type: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>, value: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a>, threshold: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a>, isDouble: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a>, conversionFactor: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a>)   <br /></td>
+      <td><a href="-metric.html">Metric</a></td>
+      <td>[jvm]<br />fun <a href="-metric.html">Metric</a>(type: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>, value: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a>, threshold: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a>, isDouble: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a> = false, conversionFactor: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a> = DEFAULT_FLOAT_CONVERSION_FACTOR)</td>
     </tr>
   </tbody>
 </table>
@@ -498,48 +512,16 @@ $('#toc').on('click', 'a', function() {
   </thead>
   <tbody>
     <tr>
-      <td><a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-metric/component1.html">component1</a></td>
-      <td>[jvm]  <br />Content  <br />operator fun <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-metric/component1.html">component1</a>(): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>  <br /><br /><br /></td>
+      <td><a href="double-threshold.html">doubleThreshold</a></td>
+      <td>[jvm]<br />fun <a href="double-threshold.html">doubleThreshold</a>(): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a><br />Specified threshold for this metric as a double value.</td>
     </tr>
     <tr>
-      <td><a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-metric/component2.html">component2</a></td>
-      <td>[jvm]  <br />Content  <br />operator fun <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-metric/component2.html">component2</a>(): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a>  <br /><br /><br /></td>
+      <td><a href="double-value.html">doubleValue</a></td>
+      <td>[jvm]<br />fun <a href="double-value.html">doubleValue</a>(): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a><br />Convenient method to retrieve the raised value as a double. Internally the value is stored as an int with a conversion factor to not loose any precision in calculations.</td>
     </tr>
     <tr>
-      <td><a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-metric/component3.html">component3</a></td>
-      <td>[jvm]  <br />Content  <br />operator fun <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-metric/component3.html">component3</a>(): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a>  <br /><br /><br /></td>
-    </tr>
-    <tr>
-      <td><a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-metric/component4.html">component4</a></td>
-      <td>[jvm]  <br />Content  <br />operator fun <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-metric/component4.html">component4</a>(): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a>  <br /><br /><br /></td>
-    </tr>
-    <tr>
-      <td><a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-metric/component5.html">component5</a></td>
-      <td>[jvm]  <br />Content  <br />operator fun <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-metric/component5.html">component5</a>(): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a>  <br /><br /><br /></td>
-    </tr>
-    <tr>
-      <td><a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-metric/copy.html">copy</a></td>
-      <td>[jvm]  <br />Content  <br />fun <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-metric/copy.html">copy</a>(type: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>, value: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a>, threshold: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a>, isDouble: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a>, conversionFactor: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a>): <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-metric/">Metric</a>  <br /><br /><br /></td>
-    </tr>
-    <tr>
-      <td><a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-metric/double-threshold.html">doubleThreshold</a></td>
-      <td>[jvm]  <br />Brief description  <br /><br /><br />Specified threshold for this metric as a double value.<br /><br />  <br />Content  <br />fun <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-metric/double-threshold.html">doubleThreshold</a>(): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a>  <br /><br /><br /></td>
-    </tr>
-    <tr>
-      <td><a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-metric/double-value.html">doubleValue</a></td>
-      <td>[jvm]  <br />Brief description  <br /><br /><br />Convenient method to retrieve the raised value as a double. Internally the value is stored as an int with a conversion factor to not loose any precision in calculations.<br /><br />  <br />Content  <br />fun <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-metric/double-value.html">doubleValue</a>(): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a>  <br /><br /><br /></td>
-    </tr>
-    <tr>
-      <td><a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api.internal/-simple-notification/#kotlin/Any/equals/#kotlin.Any?/PointingToDeclaration/">equals</a></td>
-      <td>[jvm]  <br />Content  <br />open operator override fun <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api.internal/-simple-notification/#kotlin/Any/equals/#kotlin.Any?/PointingToDeclaration/">equals</a>(other: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a>?): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a>  <br /><br /><br /></td>
-    </tr>
-    <tr>
-      <td><a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api.internal/-simple-notification/#kotlin/Any/hashCode/#/PointingToDeclaration/">hashCode</a></td>
-      <td>[jvm]  <br />Content  <br />open override fun <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api.internal/-simple-notification/#kotlin/Any/hashCode/#/PointingToDeclaration/">hashCode</a>(): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a>  <br /><br /><br /></td>
-    </tr>
-    <tr>
-      <td><a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-metric/to-string.html">toString</a></td>
-      <td>[jvm]  <br />Content  <br />open override fun <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-metric/to-string.html">toString</a>(): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>  <br /><br /><br /></td>
+      <td><a href="to-string.html">toString</a></td>
+      <td>[jvm]<br />open override fun <a href="to-string.html">toString</a>(): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></td>
     </tr>
   </tbody>
 </table>
@@ -555,24 +537,24 @@ $('#toc').on('click', 'a', function() {
   </thead>
   <tbody>
     <tr>
-      <td><a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-metric/#io.gitlab.arturbosch.detekt.api/Metric/conversionFactor/#/PointingToDeclaration/">conversionFactor</a></td>
-      <td>[jvm] val <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-metric/#io.gitlab.arturbosch.detekt.api/Metric/conversionFactor/#/PointingToDeclaration/">conversionFactor</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a>   <br /></td>
+      <td><a href="conversion-factor.html">conversionFactor</a></td>
+      <td>[jvm]<br />val <a href="conversion-factor.html">conversionFactor</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a></td>
     </tr>
     <tr>
-      <td><a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-metric/#io.gitlab.arturbosch.detekt.api/Metric/isDouble/#/PointingToDeclaration/">isDouble</a></td>
-      <td>[jvm] val <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-metric/#io.gitlab.arturbosch.detekt.api/Metric/isDouble/#/PointingToDeclaration/">isDouble</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a>   <br /></td>
+      <td><a href="is-double.html">isDouble</a></td>
+      <td>[jvm]<br />val <a href="is-double.html">isDouble</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a> = false</td>
     </tr>
     <tr>
-      <td><a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-metric/#io.gitlab.arturbosch.detekt.api/Metric/threshold/#/PointingToDeclaration/">threshold</a></td>
-      <td>[jvm] val <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-metric/#io.gitlab.arturbosch.detekt.api/Metric/threshold/#/PointingToDeclaration/">threshold</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a>   <br /></td>
+      <td><a href="threshold.html">threshold</a></td>
+      <td>[jvm]<br />val <a href="threshold.html">threshold</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a></td>
     </tr>
     <tr>
-      <td><a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-metric/#io.gitlab.arturbosch.detekt.api/Metric/type/#/PointingToDeclaration/">type</a></td>
-      <td>[jvm] val <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-metric/#io.gitlab.arturbosch.detekt.api/Metric/type/#/PointingToDeclaration/">type</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>   <br /></td>
+      <td><a href="type.html">type</a></td>
+      <td>[jvm]<br />val <a href="type.html">type</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></td>
     </tr>
     <tr>
-      <td><a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-metric/#io.gitlab.arturbosch.detekt.api/Metric/value/#/PointingToDeclaration/">value</a></td>
-      <td>[jvm] val <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-metric/#io.gitlab.arturbosch.detekt.api/Metric/value/#/PointingToDeclaration/">value</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a>   <br /></td>
+      <td><a href="value.html">value</a></td>
+      <td>[jvm]<br />val <a href="value.html">value</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a></td>
     </tr>
   </tbody>
 </table>
@@ -594,7 +576,7 @@ $('#toc').on('click', 'a', function() {
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2021 The detekt Team. All rights reserved. <br />
- Site last generated: Apr 5, 2021 <br />
+ Site last generated: Dec 26, 2021 <br />
                 </div>
             </div>
 </footer>

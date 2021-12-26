@@ -19,7 +19,7 @@
 <!-- most color styles are extracted out to here -->
 <link rel="stylesheet" href="/detekt/css/theme-blue.css">
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 <script src="/detekt/js/jquery.navgoco.min.js"></script>
@@ -28,11 +28,11 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <!-- Anchor.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.3.1/anchor.min.js"></script>
 <script src="/detekt/js/toc.js"></script>
 <script src="/detekt/js/customscripts.js"></script>
 
-<link rel="shortcut icon" href="/detekt/images/favicon.ico">
+<link rel="shortcut icon" href="/detekt/images/favicon.svg">
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -212,6 +212,13 @@
           
           
           
+          <li><a href="/detekt/compose.html">Configuration for Compose</a></li>
+          
+          
+          
+          
+          
+          
           <li><a href="/detekt/reporting.html">Reporting</a></li>
           
           
@@ -241,6 +248,13 @@
           
           
           <li><a href="/detekt/snapshots.html">Using snapshots</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a href="/detekt/compatibility.html">Compatibility Table</a></li>
           
           
           
@@ -386,7 +400,7 @@
           
           
           
-          <li><a href="/detekt/pages/kdoc/detekt-api/index.html">detekt-api</a></li>
+          <li><a href="/detekt/pages/kdoc">detekt-api</a></li>
           
           
           
@@ -457,7 +471,8 @@ $('#toc').on('click', 'a', function() {
 
     
 
-  <p><img src="images/detekt_in_action.png" alt="detekt in action" title="detekt in action" /></p>
+  <p><img src="images/logo.svg" alt="detekt logo" title="detekt logo" />
+<img src="images/detekt_in_action.png" alt="detekt in action" title="detekt in action" /></p>
 
 <h3 id="features">Features</h3>
 
@@ -479,18 +494,12 @@ $('#toc').on('click', 'a', function() {
 
 <p>Apply the following configuration to your Gradle project build file:</p>
 
-<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">buildscript</span> <span class="p">{</span>
-    <span class="nf">repositories</span> <span class="p">{</span>
-        <span class="nf">jcenter</span><span class="p">()</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="nf">plugins</span> <span class="p">{</span>
-    <span class="nf">id</span><span class="p">(</span><span class="s">"io.gitlab.arturbosch.detekt"</span><span class="p">).</span><span class="nf">version</span><span class="p">(</span><span class="s">"1.16.0"</span><span class="p">)</span>
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">plugins</span> <span class="p">{</span>
+    <span class="nf">id</span><span class="p">(</span><span class="s">"io.gitlab.arturbosch.detekt"</span><span class="p">).</span><span class="nf">version</span><span class="p">(</span><span class="s">"1.19.0"</span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="nf">repositories</span> <span class="p">{</span>
-    <span class="nf">jcenter</span><span class="p">()</span>
+    <span class="nf">mavenCentral</span><span class="p">()</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
@@ -507,30 +516,36 @@ slim down the configuration file to only the changes from the default configurat
 <code class="language-plaintext highlighter-rouge">buildUponDefaultConfig</code> option:</p>
 
 <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">detekt</span> <span class="p">{</span>
-    <span class="n">toolVersion</span> <span class="p">=</span> <span class="s">"1.16.0"</span>
+    <span class="n">toolVersion</span> <span class="p">=</span> <span class="s">"1.19.0"</span>
     <span class="n">config</span> <span class="p">=</span> <span class="nf">files</span><span class="p">(</span><span class="s">"config/detekt/detekt.yml"</span><span class="p">)</span>
     <span class="n">buildUponDefaultConfig</span> <span class="p">=</span> <span class="k">true</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
-<p>To enable/disable detekt reports and to configure their output directories edit the <code class="language-plaintext highlighter-rouge">detekt { }</code> closure:</p>
-<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">detekt</span> <span class="p">{</span>
+<p>To enable/disable detekt reports use the <code class="language-plaintext highlighter-rouge">withType</code> method to set defaults for all detekt tasks at once:</p>
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Kotlin DSL</span>
+<span class="n">tasks</span><span class="p">.</span><span class="n">withType</span><span class="p">&lt;</span><span class="nc">Detekt</span><span class="p">&gt;().</span><span class="nf">configureEach</span> <span class="p">{</span>
     <span class="nf">reports</span> <span class="p">{</span>
-        <span class="nf">xml</span> <span class="p">{</span>
-            <span class="n">enabled</span> <span class="p">=</span> <span class="k">true</span>
-            <span class="n">destination</span> <span class="p">=</span> <span class="nf">file</span><span class="p">(</span><span class="s">"path/to/destination.xml"</span><span class="p">)</span>
-        <span class="p">}</span>
-        <span class="nf">html</span> <span class="p">{</span>
-            <span class="n">enabled</span> <span class="p">=</span> <span class="k">true</span>
-            <span class="n">destination</span> <span class="p">=</span> <span class="nf">file</span><span class="p">(</span><span class="s">"path/to/destination.html"</span><span class="p">)</span>
-        <span class="p">}</span>
-        <span class="nf">txt</span> <span class="p">{</span>
-            <span class="n">enabled</span> <span class="p">=</span> <span class="k">true</span>
-            <span class="n">destination</span> <span class="p">=</span> <span class="nf">file</span><span class="p">(</span><span class="s">"path/to/destination.txt"</span><span class="p">)</span>
-        <span class="p">}</span>
+        <span class="n">xml</span><span class="p">.</span><span class="n">required</span><span class="p">.</span><span class="k">set</span><span class="p">(</span><span class="k">true</span><span class="p">)</span>
+        <span class="n">html</span><span class="p">.</span><span class="n">required</span><span class="p">.</span><span class="k">set</span><span class="p">(</span><span class="k">true</span><span class="p">)</span>
+        <span class="n">txt</span><span class="p">.</span><span class="n">required</span><span class="p">.</span><span class="k">set</span><span class="p">(</span><span class="k">true</span><span class="p">)</span>
+        <span class="n">sarif</span><span class="p">.</span><span class="n">required</span><span class="p">.</span><span class="k">set</span><span class="p">(</span><span class="k">true</span><span class="p">)</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div></div>
+
+<div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Groovy DSL</span>
+<span class="n">tasks</span><span class="o">.</span><span class="na">withType</span><span class="o">(</span><span class="n">Detekt</span><span class="o">).</span><span class="na">configureEach</span> <span class="o">{</span>
+    <span class="n">reports</span> <span class="o">{</span>
+        <span class="n">xml</span><span class="o">.</span><span class="na">required</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span>
+        <span class="n">html</span><span class="o">.</span><span class="na">required</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span>
+        <span class="n">txt</span><span class="o">.</span><span class="na">required</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span>
+        <span class="n">sarif</span><span class="o">.</span><span class="na">required</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>See <a href="https://detekt.github.io/detekt/reporting.html">reporting</a> docs for more details on configuring reports.</p>
 
 <h3 id="adding-more-rule-sets">Adding more rule sets</h3>
 
@@ -538,7 +553,7 @@ slim down the configuration file to only the changes from the default configurat
 which can be easily added to the gradle configuration:</p>
 
 <div class="language-gradle highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">dependencies</span> <span class="o">{</span>
-    <span class="n">detektPlugins</span> <span class="s2">"io.gitlab.arturbosch.detekt:detekt-formatting:1.16.0"</span>
+    <span class="n">detektPlugins</span> <span class="s2">"io.gitlab.arturbosch.detekt:detekt-formatting:1.19.0"</span>
 <span class="o">}</span>
 </code></pre></div></div>
 
@@ -561,7 +576,7 @@ which can be easily added to the gradle configuration:</p>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2021 The detekt Team. All rights reserved. <br />
- Site last generated: Apr 5, 2021 <br />
+ Site last generated: Dec 26, 2021 <br />
                 </div>
             </div>
 </footer>

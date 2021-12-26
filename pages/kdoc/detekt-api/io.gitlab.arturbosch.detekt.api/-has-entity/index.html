@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="keywords" content=" ">
-<title>HasEntity - | A static code analyzer for Kotlin</title>
+<title>HasEntity | A static code analyzer for Kotlin</title>
 <link rel="stylesheet" href="/detekt/css/syntax.css">
 
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -19,7 +19,7 @@
 <!-- most color styles are extracted out to here -->
 <link rel="stylesheet" href="/detekt/css/theme-blue.css">
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 <script src="/detekt/js/jquery.navgoco.min.js"></script>
@@ -28,11 +28,11 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <!-- Anchor.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.3.1/anchor.min.js"></script>
 <script src="/detekt/js/toc.js"></script>
 <script src="/detekt/js/customscripts.js"></script>
 
-<link rel="shortcut icon" href="/detekt/images/favicon.ico">
+<link rel="shortcut icon" href="/detekt/images/favicon.svg">
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -148,7 +148,7 @@
                                 searchInput: document.getElementById('search-input'),
                                 resultsContainer: document.getElementById('results-container'),
                                 dataSource: '/detekt/search.json',
-                                searchResultTemplate: '<li><a href="{url}" title="HasEntity -">{title}</a></li>',
+                                searchResultTemplate: '<li><a href="{url}" title="HasEntity">{title}</a></li>',
                     noResultsText: 'No results found.',
                             limit: 10,
                             fuzzy: true,
@@ -212,6 +212,13 @@
           
           
           
+          <li><a href="/detekt/compose.html">Configuration for Compose</a></li>
+          
+          
+          
+          
+          
+          
           <li><a href="/detekt/reporting.html">Reporting</a></li>
           
           
@@ -241,6 +248,13 @@
           
           
           <li><a href="/detekt/snapshots.html">Using snapshots</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a href="/detekt/compatibility.html">Compatibility Table</a></li>
           
           
           
@@ -386,7 +400,7 @@
           
           
           
-          <li><a href="/detekt/pages/kdoc/detekt-api/index.html">detekt-api</a></li>
+          <li><a href="/detekt/pages/kdoc">detekt-api</a></li>
           
           
           
@@ -413,7 +427,7 @@
         <!-- Content Column -->
         <div class="col-md-9" id="tg-sb-content">
             <div class="post-header">
-   <h1 class="post-title-main">HasEntity -</h1>
+   <h1 class="post-title-main">HasEntity</h1>
 </div>
 
 
@@ -457,39 +471,14 @@ $('#toc').on('click', 'a', function() {
 
     
 
-  <p>//<a href="/detekt/pages/kdoc/detekt-api/">detekt-api</a>/<a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/">io.gitlab.arturbosch.detekt.api</a>/<a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-has-entity/">HasEntity</a></p>
+  <p>//<a href="../../../index.html">detekt-api</a>/<a href="../index.html">io.gitlab.arturbosch.detekt.api</a>/<a href="index.html">HasEntity</a></p>
 
 <h1 id="hasentity">HasEntity</h1>
-<p>[jvm]</p>
+
+<p>[jvm]<br />
+interface <a href="index.html">HasEntity</a></p>
 
 <p>Describes a source code position.</p>
-
-<p>interface <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-has-entity/">HasEntity</a></p>
-
-<h2 id="functions">Functions</h2>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Summary</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api.internal/-simple-notification/#kotlin/Any/equals/#kotlin.Any?/PointingToDeclaration/">equals</a></td>
-      <td>[jvm]  <br />Content  <br />open operator override fun <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api.internal/-simple-notification/#kotlin/Any/equals/#kotlin.Any?/PointingToDeclaration/">equals</a>(other: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a>?): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a>  <br /><br /><br /></td>
-    </tr>
-    <tr>
-      <td><a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api.internal/-simple-notification/#kotlin/Any/hashCode/#/PointingToDeclaration/">hashCode</a></td>
-      <td>[jvm]  <br />Content  <br />open override fun <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api.internal/-simple-notification/#kotlin/Any/hashCode/#/PointingToDeclaration/">hashCode</a>(): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a>  <br /><br /><br /></td>
-    </tr>
-    <tr>
-      <td><a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api.internal/-requires-type-resolution/#kotlin/Any/toString/#/PointingToDeclaration/">toString</a></td>
-      <td>[jvm]  <br />Content  <br />open override fun <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api.internal/-requires-type-resolution/#kotlin/Any/toString/#/PointingToDeclaration/">toString</a>(): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>  <br /><br /><br /></td>
-    </tr>
-  </tbody>
-</table>
 
 <h2 id="properties">Properties</h2>
 
@@ -502,28 +491,28 @@ $('#toc').on('click', 'a', function() {
   </thead>
   <tbody>
     <tr>
-      <td><a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-has-entity/#io.gitlab.arturbosch.detekt.api/HasEntity/charPosition/#/PointingToDeclaration/">charPosition</a></td>
-      <td>[jvm] open val <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-has-entity/#io.gitlab.arturbosch.detekt.api/HasEntity/charPosition/#/PointingToDeclaration/">charPosition</a>: <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-text-location/">TextLocation</a>   <br /></td>
+      <td><a href="char-position.html">charPosition</a></td>
+      <td>[jvm]<br />open val <a href="char-position.html">charPosition</a>: <a href="../-text-location/index.html">TextLocation</a></td>
     </tr>
     <tr>
-      <td><a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-has-entity/#io.gitlab.arturbosch.detekt.api/HasEntity/entity/#/PointingToDeclaration/">entity</a></td>
-      <td>[jvm] abstract val <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-has-entity/#io.gitlab.arturbosch.detekt.api/HasEntity/entity/#/PointingToDeclaration/">entity</a>: <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-entity/">Entity</a>   <br /></td>
+      <td><a href="entity.html">entity</a></td>
+      <td>[jvm]<br />abstract val <a href="entity.html">entity</a>: <a href="../-entity/index.html">Entity</a></td>
     </tr>
     <tr>
-      <td><a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-has-entity/#io.gitlab.arturbosch.detekt.api/HasEntity/file/#/PointingToDeclaration/">file</a></td>
-      <td>[jvm] open val <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-has-entity/#io.gitlab.arturbosch.detekt.api/HasEntity/file/#/PointingToDeclaration/">file</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>   <br /></td>
+      <td><a href="file.html">file</a></td>
+      <td>[jvm]<br />open val <a href="file.html">file</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></td>
     </tr>
     <tr>
-      <td><a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-has-entity/#io.gitlab.arturbosch.detekt.api/HasEntity/location/#/PointingToDeclaration/">location</a></td>
-      <td>[jvm] open val <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-has-entity/#io.gitlab.arturbosch.detekt.api/HasEntity/location/#/PointingToDeclaration/">location</a>: <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-location/">Location</a>   <br /></td>
+      <td><a href="location.html">location</a></td>
+      <td>[jvm]<br />open val <a href="location.html">location</a>: <a href="../-location/index.html">Location</a></td>
     </tr>
     <tr>
-      <td><a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-has-entity/#io.gitlab.arturbosch.detekt.api/HasEntity/signature/#/PointingToDeclaration/">signature</a></td>
-      <td>[jvm] open val <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-has-entity/#io.gitlab.arturbosch.detekt.api/HasEntity/signature/#/PointingToDeclaration/">signature</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>   <br /></td>
+      <td><a href="signature.html">signature</a></td>
+      <td>[jvm]<br />open val <a href="signature.html">signature</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></td>
     </tr>
     <tr>
-      <td><a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-has-entity/#io.gitlab.arturbosch.detekt.api/HasEntity/startPosition/#/PointingToDeclaration/">startPosition</a></td>
-      <td>[jvm] open val <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-has-entity/#io.gitlab.arturbosch.detekt.api/HasEntity/startPosition/#/PointingToDeclaration/">startPosition</a>: <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-source-location/">SourceLocation</a>   <br /></td>
+      <td><a href="start-position.html">startPosition</a></td>
+      <td>[jvm]<br />open val <a href="start-position.html">startPosition</a>: <a href="../-source-location/index.html">SourceLocation</a></td>
     </tr>
   </tbody>
 </table>
@@ -538,7 +527,7 @@ $('#toc').on('click', 'a', function() {
   </thead>
   <tbody>
     <tr>
-      <td><a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-finding/">Finding</a></td>
+      <td><a href="../-finding/index.html">Finding</a></td>
     </tr>
   </tbody>
 </table>
@@ -560,7 +549,7 @@ $('#toc').on('click', 'a', function() {
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2021 The detekt Team. All rights reserved. <br />
- Site last generated: Apr 5, 2021 <br />
+ Site last generated: Dec 26, 2021 <br />
                 </div>
             </div>
 </footer>

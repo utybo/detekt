@@ -19,7 +19,7 @@
 <!-- most color styles are extracted out to here -->
 <link rel="stylesheet" href="/detekt/css/theme-blue.css">
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 <script src="/detekt/js/jquery.navgoco.min.js"></script>
@@ -28,11 +28,11 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <!-- Anchor.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.3.1/anchor.min.js"></script>
 <script src="/detekt/js/toc.js"></script>
 <script src="/detekt/js/customscripts.js"></script>
 
-<link rel="shortcut icon" href="/detekt/images/favicon.ico">
+<link rel="shortcut icon" href="/detekt/images/favicon.svg">
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -212,6 +212,13 @@
           
           
           
+          <li><a href="/detekt/compose.html">Configuration for Compose</a></li>
+          
+          
+          
+          
+          
+          
           <li><a href="/detekt/reporting.html">Reporting</a></li>
           
           
@@ -241,6 +248,13 @@
           
           
           <li><a href="/detekt/snapshots.html">Using snapshots</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a href="/detekt/compatibility.html">Compatibility Table</a></li>
           
           
           
@@ -386,7 +400,7 @@
           
           
           
-          <li><a href="/detekt/pages/kdoc/detekt-api/index.html">detekt-api</a></li>
+          <li><a href="/detekt/pages/kdoc">detekt-api</a></li>
           
           
           
@@ -461,8 +475,8 @@ $('#toc').on('click', 'a', function() {
 
 <h3 id="exceptionraisedinunexpectedlocation">ExceptionRaisedInUnexpectedLocation</h3>
 
-<p>This rule allows to define functions which should never throw an exception. If a function exists that does throw
-an exception it will be reported. By default this rule is checking for <code class="language-plaintext highlighter-rouge">toString</code>, <code class="language-plaintext highlighter-rouge">hashCode</code>, <code class="language-plaintext highlighter-rouge">equals</code> and
+<p>This rule reports functions which should never throw an exception. If a function exists that does throw
+an exception it will be reported. By default, this rule checks <code class="language-plaintext highlighter-rouge">toString</code>, <code class="language-plaintext highlighter-rouge">hashCode</code>, <code class="language-plaintext highlighter-rouge">equals</code> and
 <code class="language-plaintext highlighter-rouge">finalize</code>. This rule is configurable via the <code class="language-plaintext highlighter-rouge">methodNames</code> configuration to change the list of functions which
 should not throw any exceptions.</p>
 
@@ -474,7 +488,7 @@ should not throw any exceptions.</p>
 
 <ul>
   <li>
-    <p><code class="language-plaintext highlighter-rouge">methodNames</code> (default: <code class="language-plaintext highlighter-rouge">[toString, hashCode, equals, finalize]</code>)</p>
+    <p><code class="language-plaintext highlighter-rouge">methodNames</code> (default: <code class="language-plaintext highlighter-rouge">['equals', 'finalize', 'hashCode', 'toString']</code>)</p>
 
     <p>methods which should not throw exceptions</p>
   </li>
@@ -492,7 +506,7 @@ should not throw any exceptions.</p>
 
 <h3 id="instanceofcheckforexception">InstanceOfCheckForException</h3>
 
-<p>This rule reports <code class="language-plaintext highlighter-rouge">catch</code> blocks which check for the type of an exception via <code class="language-plaintext highlighter-rouge">is</code> checks or casts.
+<p>This rule reports <code class="language-plaintext highlighter-rouge">catch</code> blocks which check for the type of exception via <code class="language-plaintext highlighter-rouge">is</code> checks or casts.
 Instead of catching generic exception types and then checking for specific exception types the code should
 use multiple catch blocks. These catch blocks should then catch the specific exceptions.</p>
 
@@ -519,6 +533,7 @@ use multiple catch blocks. These catch blocks should then catch the specific exc
     <span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="n">e</span><span class="p">:</span> <span class="nc">MyException</span><span class="p">)</span> <span class="p">{</span>
     <span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="n">e</span><span class="p">:</span> <span class="nc">IOException</span><span class="p">)</span> <span class="p">{</span>
     <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div></div>
 
 <h3 id="notimplementeddeclaration">NotImplementedDeclaration</h3>
@@ -550,8 +565,8 @@ serve as temporary declarations and should not be put into production environmen
 mutable information about a specific exception or error. Hence, global singleton <code class="language-plaintext highlighter-rouge">Throwables</code>
 should be avoided.</p>
 
-<p>See https://kotlinlang.org/docs/reference/object-declarations.html#object-declarations
-See https://kotlinlang.org/docs/reference/object-declarations.html#companion-objects</p>
+<p>See https://kotlinlang.org/docs/object-declarations.html#object-declarations-overview
+See https://kotlinlang.org/docs/object-declarations.html#companion-objects</p>
 
 <p><strong>Active by default</strong>: No</p>
 
@@ -617,7 +632,11 @@ a better logging solution should be used.</p>
 <h3 id="rethrowcaughtexception">RethrowCaughtException</h3>
 
 <p>This rule reports all exceptions that are caught and then later re-thrown without modification.
-It ignores caught exceptions that are rethrown if there is work done before that.</p>
+It ignores cases:</p>
+<ol>
+  <li>When caught exceptions that are rethrown if there is work done before that.</li>
+  <li>When there are more than one catch in try block and at least one of them has some work.</li>
+</ol>
 
 <p><strong>Active by default</strong>: Yes - Since v1.16.0</p>
 
@@ -653,6 +672,14 @@ It ignores caught exceptions that are rethrown if there is work done before that
     <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">e</span><span class="p">:</span> <span class="nc">IOException</span><span class="p">)</span> <span class="p">{</span>
         <span class="nf">print</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">message</span><span class="p">)</span>
         <span class="k">throw</span> <span class="n">e</span>
+    <span class="p">}</span>
+
+    <span class="k">try</span> <span class="p">{</span>
+        <span class="c1">// ...</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">e</span><span class="p">:</span> <span class="nc">IOException</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">throw</span> <span class="n">e</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">e</span><span class="p">:</span> <span class="nc">Exception</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nf">print</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">message</span><span class="p">)</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div></div>
@@ -710,7 +737,7 @@ For that reason, this rule ignores that these configured exception types are cau
 
 <ul>
   <li>
-    <p><code class="language-plaintext highlighter-rouge">ignoredExceptionTypes</code> (default: <code class="language-plaintext highlighter-rouge">InterruptedException, NumberFormatException, ParseException, MalformedURLException</code>)</p>
+    <p><code class="language-plaintext highlighter-rouge">ignoredExceptionTypes</code> (default: <code class="language-plaintext highlighter-rouge">['InterruptedException', 'MalformedURLException', 'NumberFormatException', 'ParseException']</code>)</p>
 
     <p>exception types which should be ignored (both in the catch clause and body)</p>
   </li>
@@ -810,7 +837,7 @@ down an underlying issue in a better way.</p>
 
 <ul>
   <li>
-    <p><code class="language-plaintext highlighter-rouge">exceptions</code> (default: <code class="language-plaintext highlighter-rouge">IllegalArgumentException, IllegalStateException, IOException</code>)</p>
+    <p><code class="language-plaintext highlighter-rouge">exceptions</code> (default: <code class="language-plaintext highlighter-rouge">['ArrayIndexOutOfBoundsException', 'Exception', 'IllegalArgumentException', 'IllegalMonitorStateException', 'IllegalStateException', 'IndexOutOfBoundsException', 'NullPointerException', 'RuntimeException', 'Throwable']</code>)</p>
 
     <p>exceptions which should not be thrown without message or cause</p>
   </li>
@@ -881,7 +908,7 @@ exception is too broad it can lead to unintended exceptions being caught.</p>
 
 <ul>
   <li>
-    <p><code class="language-plaintext highlighter-rouge">exceptionNames</code> (default: <code class="language-plaintext highlighter-rouge">ArrayIndexOutOfBoundsException, Error, Exception, IllegalMonitorStateException, NullPointerException, IndexOutOfBoundsException, RuntimeException, Throwable</code>)</p>
+    <p><code class="language-plaintext highlighter-rouge">exceptionNames</code> (default: <code class="language-plaintext highlighter-rouge">['ArrayIndexOutOfBoundsException', 'Error', 'Exception', 'IllegalMonitorStateException', 'IndexOutOfBoundsException', 'NullPointerException', 'RuntimeException', 'Throwable']</code>)</p>
 
     <p>exceptions which are too generic and should not be caught</p>
   </li>
@@ -923,7 +950,7 @@ exceptions to the case that has currently occurred.</p>
 
 <ul>
   <li>
-    <p><code class="language-plaintext highlighter-rouge">exceptionNames</code> (default: <code class="language-plaintext highlighter-rouge">Error, Exception, Throwable, RuntimeException</code>)</p>
+    <p><code class="language-plaintext highlighter-rouge">exceptionNames</code> (default: <code class="language-plaintext highlighter-rouge">['Error', 'Exception', 'RuntimeException', 'Throwable']</code>)</p>
 
     <p>exceptions which are too generic and should not be thrown</p>
   </li>
@@ -965,7 +992,7 @@ exceptions to the case that has currently occurred.</p>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2021 The detekt Team. All rights reserved. <br />
- Site last generated: Apr 5, 2021 <br />
+ Site last generated: Dec 26, 2021 <br />
                 </div>
             </div>
 </footer>

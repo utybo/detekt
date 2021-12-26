@@ -19,7 +19,7 @@
 <!-- most color styles are extracted out to here -->
 <link rel="stylesheet" href="/detekt/css/theme-blue.css">
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 <script src="/detekt/js/jquery.navgoco.min.js"></script>
@@ -28,11 +28,11 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <!-- Anchor.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.3.1/anchor.min.js"></script>
 <script src="/detekt/js/toc.js"></script>
 <script src="/detekt/js/customscripts.js"></script>
 
-<link rel="shortcut icon" href="/detekt/images/favicon.ico">
+<link rel="shortcut icon" href="/detekt/images/favicon.svg">
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -212,6 +212,13 @@
           
           
           
+          <li><a href="/detekt/compose.html">Configuration for Compose</a></li>
+          
+          
+          
+          
+          
+          
           <li><a href="/detekt/reporting.html">Reporting</a></li>
           
           
@@ -241,6 +248,13 @@
           
           
           <li><a href="/detekt/snapshots.html">Using snapshots</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a href="/detekt/compatibility.html">Compatibility Table</a></li>
           
           
           
@@ -386,7 +400,7 @@
           
           
           
-          <li><a href="/detekt/pages/kdoc/detekt-api/index.html">detekt-api</a></li>
+          <li><a href="/detekt/pages/kdoc">detekt-api</a></li>
           
           
           
@@ -491,7 +505,7 @@ option).</p>
 <h3 id="commentoverprivatefunction">CommentOverPrivateFunction</h3>
 
 <p>This rule reports comments and documentation that has been added to private functions. These comments get reported
-because they probably explain the functionality of the private function. However private functions should be small
+because they probably explain the functionality of the private function. However, private functions should be small
 enough and have an understandable name so that they are self-explanatory and do not need this comment in the first
 place.</p>
 
@@ -518,6 +532,42 @@ increase readability and make the documentation obsolete.</p>
 
 <p><strong>Debt</strong>: 20min</p>
 
+<h3 id="deprecatedblocktag">DeprecatedBlockTag</h3>
+
+<p>This rule reports use of the <code class="language-plaintext highlighter-rouge">@deprecated</code> block tag in KDoc comments. Deprecation must be specified using a
+<code class="language-plaintext highlighter-rouge">@Deprecated</code> annotation as adding a <code class="language-plaintext highlighter-rouge">@deprecated</code> block tag in KDoc comments
+<a href="https://kotlinlang.org/docs/kotlin-doc.html#suppress">has no effect and is not supported</a>. The <code class="language-plaintext highlighter-rouge">@Deprecated</code>
+annotation constructor has dedicated fields for a message and a type (warning, error, etc.). You can also use the
+<code class="language-plaintext highlighter-rouge">@ReplaceWith</code> annotation to specify how to solve the deprecation automatically via the IDE.</p>
+
+<p><strong>Active by default</strong>: No</p>
+
+<p><strong>Debt</strong>: 5min</p>
+
+<h4 id="noncompliant-code">Noncompliant Code:</h4>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+* This function prints a message followed by a new line.
+*
+* @deprecated Useless, the Kotlin standard library can already do this. Replace with println.
+*/</span>
+<span class="k">fun</span> <span class="nf">printThenNewline</span><span class="p">(</span><span class="n">what</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="compliant-code">Compliant Code:</h4>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+* This function prints a message followed by a new line.
+*/</span>
+<span class="nd">@Deprecated</span><span class="p">(</span><span class="s">"Useless, the Kotlin standard library can already do this."</span><span class="p">)</span>
+<span class="nd">@ReplaceWith</span><span class="p">(</span><span class="s">"println(what)"</span><span class="p">)</span>
+<span class="k">fun</span> <span class="nf">printThenNewline</span><span class="p">(</span><span class="n">what</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
 <h3 id="endofsentenceformat">EndOfSentenceFormat</h3>
 
 <p>This rule validates the end of the first sentence of a KDoc comment.
@@ -537,19 +587,76 @@ It should end with proper punctuation or with a correct URL.</p>
   </li>
 </ul>
 
+<h3 id="outdateddocumentation">OutdatedDocumentation</h3>
+
+<p>This rule will report any class, function or constructor with KDoc that does not match declaration signature.
+If KDoc is not present or does not contain any @param or @property tags, rule violation will not be reported.
+By default, both type and value parameters need to be matched and declarations orders must be preserved. You can
+turn off these features using configuration options.</p>
+
+<p><strong>Active by default</strong>: No</p>
+
+<p><strong>Debt</strong>: 10min</p>
+
+<h4 id="configuration-options-2">Configuration options:</h4>
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">matchTypeParameters</code> (default: <code class="language-plaintext highlighter-rouge">true</code>)</p>
+
+    <p>if type parameters should be matched</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">matchDeclarationsOrder</code> (default: <code class="language-plaintext highlighter-rouge">true</code>)</p>
+
+    <p>if the order of declarations should be preserved</p>
+  </li>
+</ul>
+
+<h4 id="noncompliant-code-1">Noncompliant Code:</h4>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+* @param someParam
+* @property someProp
+*/</span>
+<span class="kd">class</span> <span class="nc">MyClass</span><span class="p">(</span><span class="n">otherParam</span><span class="p">:</span> <span class="nc">String</span><span class="p">,</span> <span class="kd">val</span> <span class="py">otherProp</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span>
+
+<span class="cm">/**
+* @param T
+* @param someParam
+*/</span>
+<span class="k">fun</span> <span class="p">&lt;</span><span class="nc">T</span><span class="p">,</span> <span class="nc">S</span><span class="p">&gt;</span> <span class="nf">myFun</span><span class="p">(</span><span class="n">someParam</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="compliant-code-1">Compliant Code:</h4>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+* @param someParam
+* @property someProp
+*/</span>
+<span class="kd">class</span> <span class="nc">MyClass</span><span class="p">(</span><span class="n">someParam</span><span class="p">:</span> <span class="nc">String</span><span class="p">,</span> <span class="kd">val</span> <span class="py">someProp</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span>
+
+<span class="cm">/**
+* @param T
+* @param S
+* @param someParam
+*/</span>
+<span class="k">fun</span> <span class="p">&lt;</span><span class="nc">T</span><span class="p">,</span> <span class="nc">S</span><span class="p">&gt;</span> <span class="nf">myFun</span><span class="p">(</span><span class="n">someParam</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span>
+</code></pre></div></div>
+
 <h3 id="undocumentedpublicclass">UndocumentedPublicClass</h3>
 
 <p>This rule reports public classes, objects and interfaces which do not have the required documentation.
 Enable this rule if the codebase should have documentation on every public class, interface and object.</p>
 
-<p>By default this rule also searches for nested and inner classes and objects. This default behavior can be changed
+<p>By default, this rule also searches for nested and inner classes and objects. This default behavior can be changed
 with the configuration options of this rule.</p>
 
 <p><strong>Active by default</strong>: No</p>
 
 <p><strong>Debt</strong>: 20min</p>
 
-<h4 id="configuration-options-2">Configuration options:</h4>
+<h4 id="configuration-options-3">Configuration options:</h4>
 
 <ul>
   <li>
@@ -611,7 +718,7 @@ Overridden properties are excluded by this rule.</p>
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2021 The detekt Team. All rights reserved. <br />
- Site last generated: Apr 5, 2021 <br />
+ Site last generated: Dec 26, 2021 <br />
                 </div>
             </div>
 </footer>

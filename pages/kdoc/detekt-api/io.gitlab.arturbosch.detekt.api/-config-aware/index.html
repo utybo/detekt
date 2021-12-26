@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="keywords" content=" ">
-<title>ConfigAware - | A static code analyzer for Kotlin</title>
+<title>ConfigAware | A static code analyzer for Kotlin</title>
 <link rel="stylesheet" href="/detekt/css/syntax.css">
 
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -19,7 +19,7 @@
 <!-- most color styles are extracted out to here -->
 <link rel="stylesheet" href="/detekt/css/theme-blue.css">
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 <script src="/detekt/js/jquery.navgoco.min.js"></script>
@@ -28,11 +28,11 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <!-- Anchor.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.3.1/anchor.min.js"></script>
 <script src="/detekt/js/toc.js"></script>
 <script src="/detekt/js/customscripts.js"></script>
 
-<link rel="shortcut icon" href="/detekt/images/favicon.ico">
+<link rel="shortcut icon" href="/detekt/images/favicon.svg">
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -148,7 +148,7 @@
                                 searchInput: document.getElementById('search-input'),
                                 resultsContainer: document.getElementById('results-container'),
                                 dataSource: '/detekt/search.json',
-                                searchResultTemplate: '<li><a href="{url}" title="ConfigAware -">{title}</a></li>',
+                                searchResultTemplate: '<li><a href="{url}" title="ConfigAware">{title}</a></li>',
                     noResultsText: 'No results found.',
                             limit: 10,
                             fuzzy: true,
@@ -212,6 +212,13 @@
           
           
           
+          <li><a href="/detekt/compose.html">Configuration for Compose</a></li>
+          
+          
+          
+          
+          
+          
           <li><a href="/detekt/reporting.html">Reporting</a></li>
           
           
@@ -241,6 +248,13 @@
           
           
           <li><a href="/detekt/snapshots.html">Using snapshots</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a href="/detekt/compatibility.html">Compatibility Table</a></li>
           
           
           
@@ -386,7 +400,7 @@
           
           
           
-          <li><a href="/detekt/pages/kdoc/detekt-api/index.html">detekt-api</a></li>
+          <li><a href="/detekt/pages/kdoc">detekt-api</a></li>
           
           
           
@@ -413,7 +427,7 @@
         <!-- Content Column -->
         <div class="col-md-9" id="tg-sb-content">
             <div class="post-header">
-   <h1 class="post-title-main">ConfigAware -</h1>
+   <h1 class="post-title-main">ConfigAware</h1>
 </div>
 
 
@@ -457,20 +471,24 @@ $('#toc').on('click', 'a', function() {
 
     
 
-  <p>//<a href="/detekt/pages/kdoc/detekt-api/">detekt-api</a>/<a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/">io.gitlab.arturbosch.detekt.api</a>/<a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-config-aware/">ConfigAware</a></p>
+  <p>//<a href="../../../index.html">detekt-api</a>/<a href="../index.html">io.gitlab.arturbosch.detekt.api</a>/<a href="index.html">ConfigAware</a></p>
 
 <h1 id="configaware">ConfigAware</h1>
-<p>[jvm]</p>
+
+<p>[jvm]<br />
+interface <a href="index.html">ConfigAware</a> : <a href="../-config/index.html">Config</a></p>
 
 <p>Interface which is implemented by each Rule class to provide utility functions to retrieve specific or generic properties from the underlying detekt configuration file.</p>
 
 <p>Be aware that there are three config levels by default:</p>
 
-<ul><li>the top level config layer specifies rule sets and detekt engine properties</li><li>the rule set level specifies properties concerning the whole rule set and rules</li><li>the rule level provides additional properties which are used to configure rules</li></ul>
+<ul>
+  <li>the top level config layer specifies rule sets and detekt engine properties</li>
+  <li>the rule set level specifies properties concerning the whole rule set and rules</li>
+  <li>the rule level provides additional properties which are used to configure rules</li>
+</ul>
 
 <p>This interface operates on the rule set level as the rule set config is passed to each rule in the #RuleSetProvider interface. This is due the fact that users create the rule set and all rules upfront and letting them ‘sub config’ the rule set config would be error-prone.</p>
-
-<p>interface <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-config-aware/">ConfigAware</a> : <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-config/">Config</a></p>
 
 <h2 id="functions">Functions</h2>
 
@@ -483,32 +501,20 @@ $('#toc').on('click', 'a', function() {
   </thead>
   <tbody>
     <tr>
-      <td><a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api.internal/-simple-notification/#kotlin/Any/equals/#kotlin.Any?/PointingToDeclaration/">equals</a></td>
-      <td>[jvm]  <br />Content  <br />open operator override fun <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api.internal/-simple-notification/#kotlin/Any/equals/#kotlin.Any?/PointingToDeclaration/">equals</a>(other: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a>?): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a>  <br /><br /><br /></td>
+      <td><a href="sub-config.html">subConfig</a></td>
+      <td>[jvm]<br />open override fun <a href="sub-config.html">subConfig</a>(key: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>): <a href="../-config/index.html">Config</a><br />Tries to retrieve part of the configuration based on given key.</td>
     </tr>
     <tr>
-      <td><a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api.internal/-simple-notification/#kotlin/Any/hashCode/#/PointingToDeclaration/">hashCode</a></td>
-      <td>[jvm]  <br />Content  <br />open override fun <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api.internal/-simple-notification/#kotlin/Any/hashCode/#/PointingToDeclaration/">hashCode</a>(): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a>  <br /><br /><br /></td>
+      <td><a href="value-or-default.html">valueOrDefault</a></td>
+      <td>[jvm]<br />open override fun &lt;<a href="value-or-default.html">T</a> : <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a>&gt; <a href="value-or-default.html">valueOrDefault</a>(key: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>, default: <a href="value-or-default.html">T</a>): <a href="value-or-default.html">T</a><br />Retrieves a sub configuration or value based on given key. If configuration property cannot be found the specified default value is returned.</td>
     </tr>
     <tr>
-      <td><a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-config-aware/sub-config.html">subConfig</a></td>
-      <td>[jvm]  <br />Brief description  <br /><br /><br />Tries to retrieve part of the configuration based on given key.<br /><br />  <br />Content  <br />open override fun <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-config-aware/sub-config.html">subConfig</a>(key: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>): <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-config/">Config</a>  <br /><br /><br /></td>
+      <td><a href="value-or-null.html">valueOrNull</a></td>
+      <td>[jvm]<br />open override fun &lt;<a href="value-or-null.html">T</a> : <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a>&gt; <a href="value-or-null.html">valueOrNull</a>(key: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>): <a href="value-or-null.html">T</a>?<br />Retrieves a sub configuration or value based on given key. If the configuration property cannot be found, null is returned.</td>
     </tr>
     <tr>
-      <td><a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api.internal/-requires-type-resolution/#kotlin/Any/toString/#/PointingToDeclaration/">toString</a></td>
-      <td>[jvm]  <br />Content  <br />open override fun <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api.internal/-requires-type-resolution/#kotlin/Any/toString/#/PointingToDeclaration/">toString</a>(): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>  <br /><br /><br /></td>
-    </tr>
-    <tr>
-      <td><a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-config-aware/value-or-default.html">valueOrDefault</a></td>
-      <td>[jvm]  <br />Brief description  <br /><br /><br />Retrieves a sub configuration or value based on given key. If configuration property cannot be found the specified default value is returned.<br /><br />  <br />Content  <br />open override fun &lt;<a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-config-aware/value-or-default.html">T</a> : <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a>&gt; <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-config-aware/value-or-default.html">valueOrDefault</a>(key: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>, default: <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-config-aware/value-or-default.html">T</a>): <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-config-aware/value-or-default.html">T</a>  <br /><br /><br /></td>
-    </tr>
-    <tr>
-      <td><a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-config-aware/value-or-null.html">valueOrNull</a></td>
-      <td>[jvm]  <br />Brief description  <br /><br /><br />Retrieves a sub configuration or value based on given key. If the configuration property cannot be found, null is returned.<br /><br />  <br />Content  <br />open override fun &lt;<a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-config-aware/value-or-null.html">T</a> : <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a>&gt; <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-config-aware/value-or-null.html">valueOrNull</a>(key: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>): <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-config-aware/value-or-null.html">T</a>?  <br /><br /><br /></td>
-    </tr>
-    <tr>
-      <td><a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-config-aware/with-auto-correct.html">withAutoCorrect</a></td>
-      <td>[jvm]  <br />Brief description  <br /><br /><br />If your rule supports to automatically correct the misbehaviour of underlying smell, specify your code inside this method call, to allow the user of your rule to trigger auto correction only when needed.<br /><br />  <br />Content  <br />open fun <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-config-aware/with-auto-correct.html">withAutoCorrect</a>(block: () -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a>)  <br /><br /><br /></td>
+      <td><a href="with-auto-correct.html">withAutoCorrect</a></td>
+      <td>[jvm]<br />open fun <a href="with-auto-correct.html">withAutoCorrect</a>(block: () -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a>)<br />If your rule supports to automatically correct the misbehaviour of underlying smell, specify your code inside this method call, to allow the user of your rule to trigger auto correction only when needed.</td>
     </tr>
   </tbody>
 </table>
@@ -524,24 +530,24 @@ $('#toc').on('click', 'a', function() {
   </thead>
   <tbody>
     <tr>
-      <td><a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-config-aware/#io.gitlab.arturbosch.detekt.api/ConfigAware/active/#/PointingToDeclaration/">active</a></td>
-      <td>[jvm] <br /><br />Is this rule specified as active in configuration? If a rule is not specified in the underlying configuration, we assume it should not be run.<br /><br />open val <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-config-aware/#io.gitlab.arturbosch.detekt.api/ConfigAware/active/#/PointingToDeclaration/">active</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a>   <br /></td>
+      <td><a href="active.html">active</a></td>
+      <td>[jvm]<br />open val <a href="active.html">active</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><br />Is this rule specified as active in configuration? If a rule is not specified in the underlying configuration, we assume it should not be run.</td>
     </tr>
     <tr>
-      <td><a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-config-aware/#io.gitlab.arturbosch.detekt.api/ConfigAware/autoCorrect/#/PointingToDeclaration/">autoCorrect</a></td>
-      <td>[jvm] <br /><br />Does this rule have auto correct specified in configuration? For auto correction to work the rule set itself enable it.<br /><br />open val <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-config-aware/#io.gitlab.arturbosch.detekt.api/ConfigAware/autoCorrect/#/PointingToDeclaration/">autoCorrect</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a>   <br /></td>
+      <td><a href="auto-correct.html">autoCorrect</a></td>
+      <td>[jvm]<br />open val <a href="auto-correct.html">autoCorrect</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><br />Does this rule have auto correct specified in configuration? For auto correction to work the rule set itself enable it.</td>
     </tr>
     <tr>
-      <td><a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-config-aware/#io.gitlab.arturbosch.detekt.api/ConfigAware/parentPath/#/PointingToDeclaration/">parentPath</a></td>
-      <td>[jvm] <br /><br /><br /><br />Keeps track of which key was taken to <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-config-aware/sub-config.html">subConfig</a> this configuration. Sub-sequential calls to <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-config-aware/sub-config.html">subConfig</a> are tracked with ‘&gt;’ as a separator.<br /><br /><br /><br />May be null if this is the top most configuration object.<br /><br /><br /><br />open override val <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-config-aware/#io.gitlab.arturbosch.detekt.api/ConfigAware/parentPath/#/PointingToDeclaration/">parentPath</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>?   <br /></td>
+      <td><a href="../-config/parent-path.html">parentPath</a></td>
+      <td>[jvm]<br />open val <a href="../-config/parent-path.html">parentPath</a>: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>?<br />Keeps track of which key was taken to <a href="../-config/sub-config.html">subConfig</a> this configuration. Sub-sequential calls to <a href="../-config/sub-config.html">subConfig</a> are tracked with ‘&gt;’ as a separator.</td>
     </tr>
     <tr>
-      <td><a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-config-aware/#io.gitlab.arturbosch.detekt.api/ConfigAware/ruleId/#/PointingToDeclaration/">ruleId</a></td>
-      <td>[jvm] <br /><br />Id which is used to retrieve the sub config for the rule implementing this interface.<br /><br />abstract val <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-config-aware/#io.gitlab.arturbosch.detekt.api/ConfigAware/ruleId/#/PointingToDeclaration/">ruleId</a>: <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/#io.gitlab.arturbosch.detekt.api/RuleId///PointingToDeclaration/">RuleId</a>   <br /></td>
+      <td><a href="rule-id.html">ruleId</a></td>
+      <td>[jvm]<br />abstract val <a href="rule-id.html">ruleId</a>: <a href="../index.html#-1624699926%2FClasslikes%2F-879243379">RuleId</a><br />Id which is used to retrieve the sub config for the rule implementing this interface.</td>
     </tr>
     <tr>
-      <td><a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-config-aware/#io.gitlab.arturbosch.detekt.api/ConfigAware/ruleSetConfig/#/PointingToDeclaration/">ruleSetConfig</a></td>
-      <td>[jvm] <br /><br />Wrapped configuration of the ruleSet this rule is in. Use <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-config-aware/value-or-default.html">valueOrDefault</a> function to retrieve properties specified for the rule implementing this interface instead. Only use this property directly if you need a specific rule set property.<br /><br />abstract val <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-config-aware/#io.gitlab.arturbosch.detekt.api/ConfigAware/ruleSetConfig/#/PointingToDeclaration/">ruleSetConfig</a>: <a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-config/">Config</a>   <br /></td>
+      <td><a href="rule-set-config.html">ruleSetConfig</a></td>
+      <td>[jvm]<br />abstract val <a href="rule-set-config.html">ruleSetConfig</a>: <a href="../-config/index.html">Config</a><br />Wrapped configuration of the ruleSet this rule is in. Use <a href="value-or-default.html">valueOrDefault</a> function to retrieve properties specified for the rule implementing this interface instead. Only use this property directly if you need a specific rule set property.</td>
     </tr>
   </tbody>
 </table>
@@ -556,7 +562,7 @@ $('#toc').on('click', 'a', function() {
   </thead>
   <tbody>
     <tr>
-      <td><a href="/detekt/pages/kdoc/detekt-api/io.gitlab.arturbosch.detekt.api/-rule/">Rule</a></td>
+      <td><a href="../-rule/index.html">Rule</a></td>
     </tr>
   </tbody>
 </table>
@@ -578,7 +584,7 @@ $('#toc').on('click', 'a', function() {
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2021 The detekt Team. All rights reserved. <br />
- Site last generated: Apr 5, 2021 <br />
+ Site last generated: Dec 26, 2021 <br />
                 </div>
             </div>
 </footer>

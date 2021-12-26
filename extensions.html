@@ -19,7 +19,7 @@
 <!-- most color styles are extracted out to here -->
 <link rel="stylesheet" href="/detekt/css/theme-blue.css">
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 <script src="/detekt/js/jquery.navgoco.min.js"></script>
@@ -28,11 +28,11 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <!-- Anchor.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.3.1/anchor.min.js"></script>
 <script src="/detekt/js/toc.js"></script>
 <script src="/detekt/js/customscripts.js"></script>
 
-<link rel="shortcut icon" href="/detekt/images/favicon.ico">
+<link rel="shortcut icon" href="/detekt/images/favicon.svg">
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -212,6 +212,13 @@
           
           
           
+          <li><a href="/detekt/compose.html">Configuration for Compose</a></li>
+          
+          
+          
+          
+          
+          
           <li><a href="/detekt/reporting.html">Reporting</a></li>
           
           
@@ -241,6 +248,13 @@
           
           
           <li><a href="/detekt/snapshots.html">Using snapshots</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a href="/detekt/compatibility.html">Compatibility Table</a></li>
           
           
           
@@ -386,7 +400,7 @@
           
           
           
-          <li><a href="/detekt/pages/kdoc/detekt-api/index.html">detekt-api</a></li>
+          <li><a href="/detekt/pages/kdoc">detekt-api</a></li>
           
           
           
@@ -468,15 +482,16 @@ So it is possible to define rules/rule sets and enhance <em>detekt</em> with you
 <p>Attention: You need a <code class="language-plaintext highlighter-rouge">resources/META-INF/services/io.gitlab.arturbosch.detekt.api.RuleSetProvider</code> file which 
 has as content the fully qualified name of your <code class="language-plaintext highlighter-rouge">RuleSetProvider</code> e.g. <em>io.gitlab.arturbosch.detekt.sample.extensions.SampleProvider</em>.</p>
 
-<p>The easiest way to define a rule set is to clone the provided <strong>detekt-sample-extensions</strong> project.</p>
+<p>You can use our <a href="https://github.com/detekt/detekt-custom-rule-template">GitHub template</a> to have a basic scaffolding to
+develop your own custom rules. Another option is to clone the provided <a href="https://github.com/detekt/detekt/tree/main/detekt-sample-extensions">detekt/detekt-sample-extensions</a> project.</p>
 
 <p>Own rules have to extend the abstract <em>Rule</em> class and override the <code class="language-plaintext highlighter-rouge">visitXXX()</code>-functions from the AST.<br />
 A <code class="language-plaintext highlighter-rouge">RuleSetProvider</code> must be implemented, which declares a <code class="language-plaintext highlighter-rouge">RuleSet</code> in the <code class="language-plaintext highlighter-rouge">instance()</code>-function.
-To allow your rule to be configurable, pass it a Config object from within your rule set provider.<br />
+To leverage the configuration mechanism of detekt you must pass the Config object from your rule set provider to your rule.
 An <code class="language-plaintext highlighter-rouge">Issue</code> property defines what ID, severity and message should be printed on the console or on any other output format.</p>
 
 <p>Example of a custom rule:</p>
-<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">TooManyFunctions</span> <span class="p">:</span> <span class="nc">Rule</span><span class="p">()</span> <span class="p">{</span>
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">TooManyFunctions</span><span class="p">(</span><span class="n">config</span><span class="p">:</span> <span class="nc">Config</span><span class="p">)</span> <span class="p">:</span> <span class="nc">Rule</span><span class="p">(</span><span class="n">config</span><span class="p">)</span> <span class="p">{</span>
 
     <span class="k">override</span> <span class="kd">val</span> <span class="py">issue</span> <span class="p">=</span> <span class="nc">Issue</span><span class="p">(</span><span class="n">javaClass</span><span class="p">.</span><span class="n">simpleName</span><span class="p">,</span>
         <span class="nc">Severity</span><span class="p">.</span><span class="nc">CodeSmell</span><span class="p">,</span>
@@ -503,14 +518,16 @@ An <code class="language-plaintext highlighter-rouge">Issue</code> property defi
 </code></pre></div></div>
 
 <p>Example of a much preciser rule in terms of more specific CodeSmell constructor and Rule attributes:</p>
-<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">TooManyFunctions2</span><span class="p">(</span><span class="n">config</span><span class="p">:</span> <span class="nc">Config</span><span class="p">)</span> <span class="p">:</span> <span class="nc">ThresholdRule</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="nc">THRESHOLD</span><span class="p">)</span> <span class="p">{</span>
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">TooManyFunctions2</span><span class="p">(</span><span class="n">config</span><span class="p">:</span> <span class="nc">Config</span><span class="p">)</span> <span class="p">:</span> <span class="nc">Rule</span><span class="p">(</span><span class="n">config</span><span class="p">)</span> <span class="p">{</span>
 
-    <span class="k">override</span> <span class="kd">val</span> <span class="py">issue</span> <span class="p">=</span> <span class="nc">Issue</span><span class="p">(</span><span class="n">javaClass</span><span class="p">.</span><span class="n">simpleName</span><span class="p">,</span>
+    <span class="k">override</span> <span class="kd">val</span> <span class="py">issue</span> <span class="p">=</span> <span class="nc">Issue</span><span class="p">(</span>
+        <span class="n">javaClass</span><span class="p">.</span><span class="n">simpleName</span><span class="p">,</span>
         <span class="nc">Severity</span><span class="p">.</span><span class="nc">CodeSmell</span><span class="p">,</span>
         <span class="s">"This rule reports a file with an excessive function count."</span><span class="p">,</span>
-        <span class="nc">Debt</span><span class="p">.</span><span class="nc">TWENTY_MINS</span><span class="p">)</span>
+        <span class="nc">Debt</span><span class="p">.</span><span class="nc">TWENTY_MINS</span>
+    <span class="p">)</span>
 
-    <span class="k">private</span> <span class="kd">val</span> <span class="py">threshold</span> <span class="p">=</span> <span class="nf">valueOrDefault</span><span class="p">(</span><span class="s">"threshold"</span><span class="p">,</span> <span class="nc">THRESHOLD</span><span class="p">)</span>
+    <span class="k">private</span> <span class="kd">val</span> <span class="py">threshold</span><span class="p">:</span> <span class="nc">Int</span> <span class="k">by</span> <span class="nf">config</span><span class="p">(</span><span class="n">defaultValue</span> <span class="p">=</span> <span class="mi">10</span><span class="p">)</span>
     <span class="k">private</span> <span class="kd">var</span> <span class="py">amount</span><span class="p">:</span> <span class="nc">Int</span> <span class="p">=</span> <span class="mi">0</span>
 
     <span class="k">override</span> <span class="k">fun</span> <span class="nf">visitKtFile</span><span class="p">(</span><span class="n">file</span><span class="p">:</span> <span class="nc">KtFile</span><span class="p">)</span> <span class="p">{</span>
@@ -531,16 +548,17 @@ An <code class="language-plaintext highlighter-rouge">Issue</code> property defi
         <span class="k">super</span><span class="p">.</span><span class="nf">visitNamedFunction</span><span class="p">(</span><span class="n">function</span><span class="p">)</span>
         <span class="n">amount</span><span class="p">++</span>
     <span class="p">}</span>
-    
-    <span class="k">const</span> <span class="kd">val</span> <span class="py">THRESHOLD</span> <span class="p">=</span> <span class="mi">10</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
-<p>If you want your rule to be configurable, write down your properties inside the detekt.yml file:</p>
+<p>If you want your rule to be configurable, write down your properties inside the detekt.yml file.
+Please note that this will only take effect, if the <code class="language-plaintext highlighter-rouge">Config</code> object is passed on by the <code class="language-plaintext highlighter-rouge">RuleSetProvider</code>
+to the rule itself.</p>
 
 <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">MyRuleSet</span><span class="pi">:</span>
   <span class="na">TooManyFunctions2</span><span class="pi">:</span>
-    <span class="na">threshold</span><span class="pi">:</span> <span class="m">10</span>
+    <span class="na">active</span><span class="pi">:</span> <span class="no">true</span>
+    <span class="na">threshold</span><span class="pi">:</span> <span class="m">5</span>
   <span class="na">OtherRule</span><span class="pi">:</span>
     <span class="na">active</span><span class="pi">:</span> <span class="no">false</span>
 </code></pre></div></div>
@@ -662,16 +680,16 @@ To enable it, we add the published dependency to <code class="language-plaintext
 
 <h6 id="gradle-kotlingroovy-dsl">Gradle (Kotlin/Groovy DSL)</h6>
 <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">dependencies</span> <span class="p">{</span>
-    <span class="nf">detektPlugins</span><span class="p">(</span><span class="s">"io.gitlab.arturbosch.detekt:detekt-formatting:1.16.0"</span><span class="p">)</span>
+    <span class="nf">detektPlugins</span><span class="p">(</span><span class="s">"io.gitlab.arturbosch.detekt:detekt-formatting:1.19.0"</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
 <h5 id="pitfalls">Pitfalls</h5>
 
 <ul>
-  <li>By default all rules not annotated with <code class="language-plaintext highlighter-rouge">@ActiveByDefault</code> are disabled.
-That means your custom rules are also disabled if you have not explicitly enabled
-them in the <code class="language-plaintext highlighter-rouge">detekt</code> yaml configuration file.</li>
+  <li>All rules are disabled by default and have to be explicitly enabled in the <code class="language-plaintext highlighter-rouge">detekt</code> yaml configuration file.</li>
+  <li>If you do not pass the <code class="language-plaintext highlighter-rouge">Config</code> object from the <code class="language-plaintext highlighter-rouge">RuleSetProvider</code> to the rule, the rule is active, but you will not be able to use
+any configuration options or disable the rule via config file.</li>
   <li>If your extension is part of your project and you integrate it like <code class="language-plaintext highlighter-rouge">detektPlugins project(":my-rules")</code> make sure that this
 subproject is build before <code class="language-plaintext highlighter-rouge">gradle detekt</code> is run.
 In the <code class="language-plaintext highlighter-rouge">kotlin-dsl</code> you could add something like <code class="language-plaintext highlighter-rouge">tasks.withType&lt;Detekt&gt; { dependsOn(":my-rules:assemble") }</code> to explicitly run <code class="language-plaintext highlighter-rouge">detekt</code> only 
@@ -704,7 +722,7 @@ Only write auto correcting code within the <code class="language-plaintext highl
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2021 The detekt Team. All rights reserved. <br />
- Site last generated: Apr 5, 2021 <br />
+ Site last generated: Dec 26, 2021 <br />
                 </div>
             </div>
 </footer>

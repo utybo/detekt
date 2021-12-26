@@ -19,7 +19,7 @@
 <!-- most color styles are extracted out to here -->
 <link rel="stylesheet" href="/detekt/css/theme-blue.css">
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 <script src="/detekt/js/jquery.navgoco.min.js"></script>
@@ -28,11 +28,11 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <!-- Anchor.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.3.1/anchor.min.js"></script>
 <script src="/detekt/js/toc.js"></script>
 <script src="/detekt/js/customscripts.js"></script>
 
-<link rel="shortcut icon" href="/detekt/images/favicon.ico">
+<link rel="shortcut icon" href="/detekt/images/favicon.svg">
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -212,6 +212,13 @@
           
           
           
+          <li><a href="/detekt/compose.html">Configuration for Compose</a></li>
+          
+          
+          
+          
+          
+          
           <li><a href="/detekt/reporting.html">Reporting</a></li>
           
           
@@ -241,6 +248,13 @@
           
           
           <li><a href="/detekt/snapshots.html">Using snapshots</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a href="/detekt/compatibility.html">Compatibility Table</a></li>
           
           
           
@@ -386,7 +400,7 @@
           
           
           
-          <li><a href="/detekt/pages/kdoc/detekt-api/index.html">detekt-api</a></li>
+          <li><a href="/detekt/pages/kdoc">detekt-api</a></li>
           
           
           
@@ -457,7 +471,7 @@ $('#toc').on('click', 'a', function() {
 
     
 
-  <p><em>detekt</em> uses a yaml style configuration file for various things:</p>
+  <p><em>detekt</em> uses a <a href="https://yaml.org/spec/1.2/spec.html">YAML style configuration</a> file for various things:</p>
 
 <ul>
   <li>rule set and rule properties</li>
@@ -475,18 +489,18 @@ file for all defined configuration options and their default values.</p>
 <h2 id="rule-sets-and-rules">Rule sets and rules</h2>
 
 <p><em>detekt</em> allows easily to just pick the rules you want and configure them the way you like.
-For example if you want to allow up to 20 functions inside a Kotlin file instead of the default threshold of 10, write:</p>
+For example if you want to allow up to 20 functions inside a Kotlin file instead of the default threshold, write:</p>
 
 <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">complexity</span><span class="pi">:</span>
   <span class="na">TooManyFunctions</span><span class="pi">:</span>
-    <span class="na">threshold</span><span class="pi">:</span> <span class="m">20</span>
+    <span class="na">thresholdInFiles</span><span class="pi">:</span> <span class="m">20</span>
 </code></pre></div></div>
 
 <p>To read about all supported rule sets and rules, use the side navigation <code class="language-plaintext highlighter-rouge">Rule Sets</code>.</p>
 
 <h3 id="path-filters--excludes--includes">Path Filters / Excludes / Includes</h3>
 
-<p>Fine grained path filters can be defined for each rule or rule set through globing patterns.
+<p>Fine grained path filters can be defined for each rule or rule set through globbing patterns.
 This gives the user more freedom in analyzing only specific files
 and rule authors the ability to write <em>library only</em> rules.</p>
 
@@ -495,6 +509,20 @@ and rule authors the ability to write <em>library only</em> rules.</p>
     <span class="s">...</span>
     <span class="s">excludes</span><span class="pi">:</span> <span class="pi">[</span><span class="s1">'</span><span class="s">**/internal/**'</span><span class="pi">]</span>
     <span class="na">includes</span><span class="pi">:</span> <span class="pi">[</span><span class="s1">'</span><span class="s">**/internal/util/NeedsToBeChecked.kt'</span><span class="pi">]</span>
+</code></pre></div></div>
+
+<p>In case you want to apply the same filters for different rules, you can use
+<a href="https://yaml.org/spec/1.2/spec.html#id2785586">YAML anchors and aliases</a> to reapply previously defined paths.</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">naming</span><span class="pi">:</span>
+  <span class="na">ClassNaming</span><span class="pi">:</span>
+    <span class="s">...</span>
+    <span class="s">excludes</span><span class="pi">:</span> <span class="nl">&amp;testFolders</span>
+      <span class="pi">-</span> <span class="s1">'</span><span class="s">**/test/**'</span>
+      <span class="pi">-</span> <span class="s1">'</span><span class="s">**/androidTest/**'</span>
+  <span class="na">ConstructorParameterNaming</span><span class="pi">:</span>
+    <span class="s">...</span>
+    <span class="s">excludes</span><span class="pi">:</span> <span class="nv">*testFolders</span>
 </code></pre></div></div>
 
 <h2 id="build-failure">Build failure</h2>
@@ -534,6 +562,7 @@ For example: If you have 5 findings of the category <em>complexity</em>, then yo
   <span class="c1">#  - 'NotificationReport'</span>
   <span class="c1">#  - 'FindingsReport'</span>
   <span class="c1">#  - 'FileBasedFindingsReport'</span>
+  <span class="c1">#  - 'LiteFindingsReport'</span>
 </code></pre></div></div>
 
 <p><strong>ProjectStatisticsReport</strong> contains metrics and statistics concerning the analyzed project sorted by priority.</p>
@@ -620,7 +649,7 @@ More details on the IntelliJ support are available
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2021 The detekt Team. All rights reserved. <br />
- Site last generated: Apr 5, 2021 <br />
+ Site last generated: Dec 26, 2021 <br />
                 </div>
             </div>
 </footer>

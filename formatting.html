@@ -19,7 +19,7 @@
 <!-- most color styles are extracted out to here -->
 <link rel="stylesheet" href="/detekt/css/theme-blue.css">
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 <script src="/detekt/js/jquery.navgoco.min.js"></script>
@@ -28,11 +28,11 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <!-- Anchor.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.3.1/anchor.min.js"></script>
 <script src="/detekt/js/toc.js"></script>
 <script src="/detekt/js/customscripts.js"></script>
 
-<link rel="shortcut icon" href="/detekt/images/favicon.ico">
+<link rel="shortcut icon" href="/detekt/images/favicon.svg">
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -212,6 +212,13 @@
           
           
           
+          <li><a href="/detekt/compose.html">Configuration for Compose</a></li>
+          
+          
+          
+          
+          
+          
           <li><a href="/detekt/reporting.html">Reporting</a></li>
           
           
@@ -241,6 +248,13 @@
           
           
           <li><a href="/detekt/snapshots.html">Using snapshots</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a href="/detekt/compatibility.html">Compatibility Table</a></li>
           
           
           
@@ -386,7 +400,7 @@
           
           
           
-          <li><a href="/detekt/pages/kdoc/detekt-api/index.html">detekt-api</a></li>
+          <li><a href="/detekt/pages/kdoc">detekt-api</a></li>
           
           
           
@@ -493,7 +507,7 @@ in the command line interface.</p>
     <p>indentation size</p>
   </li>
   <li>
-    <p><code class="language-plaintext highlighter-rouge">maxLineLength</code> (default: <code class="language-plaintext highlighter-rouge">120</code>)</p>
+    <p><code class="language-plaintext highlighter-rouge">maxLineLength</code> (default: <code class="language-plaintext highlighter-rouge">120</code>) (android default: <code class="language-plaintext highlighter-rouge">100</code>)</p>
 
     <p>maximum line length</p>
   </li>
@@ -546,15 +560,15 @@ in the command line interface.</p>
 <p>For defining import layout patterns see:
 https://github.com/pinterest/ktlint/blob/a6ca5b2edf95cc70a138a9470cfb6c4fd5d9d3ce/ktlint-ruleset-standard/src/main/kotlin/com/pinterest/ktlint/ruleset/standard/ImportOrderingRule.kt</p>
 
-<p><strong>Active by default</strong>: No</p>
+<p><strong>Active by default</strong>: Yes - Since v1.19.0</p>
 
 <h4 id="configuration-options-2">Configuration options:</h4>
 
 <ul>
   <li>
-    <p><code class="language-plaintext highlighter-rouge">layout</code> (default: <code class="language-plaintext highlighter-rouge">'*,java.**,javax.**,kotlin.**,^'</code>)</p>
+    <p><code class="language-plaintext highlighter-rouge">layout</code> (default: <code class="language-plaintext highlighter-rouge">'*,java.**,javax.**,kotlin.**,^'</code>) (android default: <code class="language-plaintext highlighter-rouge">'*'</code>)</p>
 
-    <p>the import ordering layout;</p>
+    <p>the import ordering layout</p>
   </li>
 </ul>
 
@@ -562,7 +576,7 @@ https://github.com/pinterest/ktlint/blob/a6ca5b2edf95cc70a138a9470cfb6c4fd5d9d3c
 
 <p>See <a href="https://ktlint.github.io/#rule-indentation">ktlint-website</a> for documentation.</p>
 
-<p><strong>Active by default</strong>: No</p>
+<p><strong>Active by default</strong>: Yes - Since v1.19.0</p>
 
 <h4 id="configuration-options-3">Configuration options:</h4>
 
@@ -583,13 +597,15 @@ https://github.com/pinterest/ktlint/blob/a6ca5b2edf95cc70a138a9470cfb6c4fd5d9d3c
 
 <p>See <a href="https://ktlint.github.io">ktlint-website</a> for documentation.</p>
 
+<p>This rules overlaps with <a href="https://detekt.github.io/detekt/style.html#maxlinelength"><code class="language-plaintext highlighter-rouge">MaxLineLength</code></a> from the standard rules, make sure to enable just one or keep them aligned.</p>
+
 <p><strong>Active by default</strong>: Yes - Since v1.0.0</p>
 
 <h4 id="configuration-options-4">Configuration options:</h4>
 
 <ul>
   <li>
-    <p><code class="language-plaintext highlighter-rouge">maxLineLength</code> (default: <code class="language-plaintext highlighter-rouge">120</code>)</p>
+    <p><code class="language-plaintext highlighter-rouge">maxLineLength</code> (default: <code class="language-plaintext highlighter-rouge">120</code>) (android default: <code class="language-plaintext highlighter-rouge">100</code>)</p>
 
     <p>maximum line length</p>
   </li>
@@ -610,7 +626,7 @@ https://github.com/pinterest/ktlint/blob/a6ca5b2edf95cc70a138a9470cfb6c4fd5d9d3c
 
 <p>See <a href="https://ktlint.github.io/#rule-modifier-order">ktlint-website</a> for documentation.</p>
 
-<p><strong>Active by default</strong>: Yes - Since v1.0.0</p>
+<p><strong>Active by default</strong>: No</p>
 
 <h3 id="noblanklinebeforerbrace">NoBlankLineBeforeRbrace</h3>
 
@@ -688,7 +704,7 @@ https://github.com/pinterest/ktlint/blob/a6ca5b2edf95cc70a138a9470cfb6c4fd5d9d3c
 
 <p>See <a href="https://ktlint.github.io">ktlint-website</a> for documentation.</p>
 
-<p><strong>Active by default</strong>: Yes - Since v1.0.0</p>
+<p><strong>Active by default</strong>: No</p>
 
 <h3 id="parameterlistwrapping">ParameterListWrapping</h3>
 
@@ -705,7 +721,7 @@ https://github.com/pinterest/ktlint/blob/a6ca5b2edf95cc70a138a9470cfb6c4fd5d9d3c
     <p>indentation size</p>
   </li>
   <li>
-    <p><code class="language-plaintext highlighter-rouge">maxLineLength</code> (default: <code class="language-plaintext highlighter-rouge">120</code>)</p>
+    <p><code class="language-plaintext highlighter-rouge">maxLineLength</code> (default: <code class="language-plaintext highlighter-rouge">120</code>) (android default: <code class="language-plaintext highlighter-rouge">100</code>)</p>
 
     <p>maximum line length</p>
   </li>
@@ -811,7 +827,7 @@ https://github.com/pinterest/ktlint/blob/a6ca5b2edf95cc70a138a9470cfb6c4fd5d9d3c
             <div class="row">
                 <div class="col-lg-12 footer">
                &copy;2021 The detekt Team. All rights reserved. <br />
- Site last generated: Apr 5, 2021 <br />
+ Site last generated: Dec 26, 2021 <br />
                 </div>
             </div>
 </footer>
