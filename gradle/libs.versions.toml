@@ -46,7 +46,7 @@ dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
 gradleVersions = { id = "com.github.ben-manes.versions", version = "0.39.0" }
 pluginPublishing = { id = "com.gradle.plugin-publish", version = "0.18.0" }
 shadow = { id = "com.github.johnrengelman.shadow", version = "7.1.2" }
-sonarqube = { id = "org.sonarqube", version = "3.3" }
+sonarqube = { id = "org.sonarqube", version = "4.0.0.2929" }
 
 [bundles]
 testImplementation = ["assertj", "spek-dsl"]
